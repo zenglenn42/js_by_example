@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 04.01</title>
+</head>
+<body>
+	<!-- 
+		Alert doesn't understand html and only takes one string argument.
+		Consequently the following will print:
+
+		Hello<br />
+
+		Note: The program pauses until the user acknowledges the alert.
+	-->
+	<script type="text/javascript">
+		alert("Hello<br />", "world!<br />");
+	</script>
+
+	<!-- This is better. -->
+
+	<script type="text/javascript">
+		alert("Hello,\n" + "world!\n");
+	</script>
+
+</body>
+</html>

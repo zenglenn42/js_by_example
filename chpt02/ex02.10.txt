@@ -1,0 +1,5 @@
+Errors:
+
+1. Missing closing right angle bracket for opening script tag.
+2. 2 Missing semi-colons for writeline statements.
+3. Missing <pre> .. </pre> tags to enable writeln statements.

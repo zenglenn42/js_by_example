@@ -1,0 +1,73 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: url("skyline.jpg");
+	background-repeat: no-repeat;
+	font-family: Georgia;
+}
+h1 {
+	font-weight: bold;
+	font-size: 200%;
+	color: white;
+	background-color: darkblue;
+	padding: 0.6em 2.4em;
+	opacity: 0.75;
+}
+.title {
+	width: 1045px;
+}
+div#input {
+	position: absolute;
+	left: 5em;
+	top: 10em;
+	opacity: 0.8;
+}
+div#output {
+	position: absolute;
+	left: 25em;
+	top: 10em;
+}
+/* Figure out how to make this scrollable. */
+div#blogOutput {
+	width: 35em;
+	height: 20em;
+	opacity: 0.8;
+	background-color: white;
+	border: 1px solid black;
+	overflow: hidden;
+}
+#nameentry {
+	padding: 0.35em 1.0em;
+	margin-bottom: 0.5em;
+	border: 1px solid black;
+	font-size: 100%;
+}
+textarea#entry {
+	width: 26em;
+	height: 7em;
+	border: 1px solid black;
+}
+label {
+	color: white;
+	background-color: darkblue;
+	font-weight: bold;
+	padding: 0.25em 1em;
+}
+a.blogLink {
+	text-decoration: none;
+	color: black;
+	background-color: white;
+}
+a.blogSelected {
+	text-decoration: none;
+	color: white;
+	background-color: red;
+}
+.clickVisible {
+	visibility: hidden;
+}
+#deleteBtn {
+	color: white;
+	background-color: red;
+	font-weight: bold;
+}

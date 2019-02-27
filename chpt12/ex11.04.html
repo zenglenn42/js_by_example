@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex. 11.04</title>
+	<script type="text/javascript">
+		var gPics;
+		var img1Url = "earth.png";
+		var img2Url = "moonrise.png";
+
+		function preloadImages() {
+			gPics = new Array();
+			gPics[0] = new Image();
+			gPics[0].src = img1Url;
+			gPics[1] = new Image();
+			gPics[1].src = img2Url;
+		}
+
+		function mouseOver(index, imgField) {
+			var i = Number(index);
+			//console.log(i, gPics[i].src);
+			imgField.src = gPics[i].src;
+		}
+
+		function mouseOut(index, imgField) {
+			var i = Number(index);
+			//console.log(i, gPics[i].src);
+			imgField.src = gPics[i].src;
+		}
+	</script>
+</head>
+
+<body onload="preloadImages()">
+	<form name="imgForm">
+		<img 
+			name="imgField" 
+			src="earth.png"
+			onMouseOver="mouseOver(1, this)" 
+			onMouseOut="mouseOut(0, this)" />
+	</form>
+</body>
+</html>

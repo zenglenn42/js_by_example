@@ -1,0 +1,7 @@
+The client-side representation of a web-page consist of three layers:
+
+javascript - adds dynamic behavior
+
+css        - controls presentation attributes
+
+html       - defines the document structure and content

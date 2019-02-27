@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 17.04</title>
+	<script type="text/javascript">
+		function lunhValid(ccNumStr) {
+			var ccNum = ccNumStr.split("");
+			for (var i = ccNum.length -2; i >= 0; i -= 2) {
+				var doubleIt = ccNum[i] * 2;
+				ccNum[i] = ccNum[i] * 2;
+				if (ccNum[i] > 9) {
+					var ones = ccNum[i] % 10;
+					var tens = parseInt(ccNum[i] / 10);
+					ccNum[i] = tens + ones
+				}
+			}
+			var sum = 0;
+			for (var i = 0; i < ccNum.length; i++) {
+				sum += Number(ccNum[i]);
+			}
+			return (sum % 10 == 0);
+		}
+
+		function testCreditCardNums() {
+			var ccNums = new Array(
+				"49927398716",
+				"49927398717"
+			);
+			for (var i in ccNums) {
+				if (lunhValid(ccNums[i])) {
+					alert(ccNums[i] + " is a Lunh-valid credit card number");
+				} else {
+					alert(ccNums[i] + " is not a Lunh-valid credit card number");
+				}
+			}
+		}
+
+		window.onload = testCreditCardNums;
+	</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,9 @@
+var start_time = (day == weekend) ? 12 : 9;
+
+is equivalent to:
+
+if (day == weekend) {
+	start_time = 12
+} else {
+	start_time = 9;
+}

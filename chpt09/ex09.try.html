@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>str slice vs substr</title>
+	<script type="text/javascript">
+		function tryIt() {
+			var array = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"];
+			var str = "abcdefghijk"
+			//         0--^-+^---1
+			var sliceStr = str.slice(3, 5);
+			var subStr = str.substr(3, 5);
+			document.write("<pre>str = " + str + "<br />");
+			document.write("      012^4567891" + "<br />");
+			document.write("slc = " + sliceStr + "<br />");
+			document.write("sub = " + subStr + "<br />");
+			var aslc = array.slice(3, 5);
+			document.write("array = " + array + "<br />");
+			document.write("aslice= " + aslc + "<br /></pre>");
+		}
+	</script>
+</head>
+<body onload="tryIt()">
+</body>
+</html>

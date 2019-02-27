@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 06.05</title>
+	<script>
+		function getMonthName() {
+			var monthNum = parseInt(prompt("Enter month number", "e.g., 1-12"));
+			var monthNames = [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"June",
+				"July",
+				"August",
+				"September",
+				"October",
+				"November",
+				"December"
+				];
+			switch(monthNum) {
+				case 1:  case 2:  case 3:
+				case 4:  case 5:  case 6:
+				case 7:  case 8:  case 9:
+				case 10: case 11: case 12:
+					alert(monthNames[monthNum - 1]);
+					break;
+
+				default:
+					alert("Invalid month");
+			}
+		}
+	</script>
+</head>
+<body onload="getMonthName()">
+</body>
+</html>

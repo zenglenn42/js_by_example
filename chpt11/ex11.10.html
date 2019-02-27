@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 11.10</title>
+	<script type="text/javascript">
+		function changeColor(radioButton) {
+			var color = radioButton.value;
+			document.bgColor = color;
+		}
+	</script>
+</head>
+<body>
+	<form name="colorForm">
+		<big>
+			Change background window color ...
+		</big>
+		<hr />
+		<input type="radio" name="radio" id="radiored" value="red" onclick="changeColor(this)" />
+		<label for="radio">Red</label>
+		<br />
+		<input type="radio" name="radio" id="radiogreen" value="green" onclick="changeColor(this)" />
+		<label for="radio">Green</label>
+		<br />
+		<input type="radio" name="radio" id="radioblue" value="blue" onclick="changeColor(this)" />
+		<label for="radio">Blue</label>
+	</form>
+</body>
+</html>

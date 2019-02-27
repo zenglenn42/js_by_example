@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 09.08</title>
+	<style>
+		td,th {
+			padding-left:   .3em;
+			padding-right:  .3em;
+			padding-top:    .7em;
+			padding-bottom: .7em;
+			border-bottom:   1px solid black;
+		}
+	</style>
+</head>
+<body bgcolor="silver">
+	<table>
+		<thead>
+			<th>Number</th>
+			<th>Number.toFixed(0)</th>
+			<th>Math.ceil()</th>
+			<th>Math.round()</th>
+			<th>Math.floor()</th>
+		</thead>
+		<tbody>
+			<script>
+				var nums = new Array(125.5567, 125.5, -125.5, -125.5567);
+				for (var i in nums) {
+					var num = nums[i];
+					var fixed = num.toFixed(0);
+					var ceil = Math.ceil(num);
+					var round = Math.round(num);
+					var floor = Math.floor(num);
+
+					// Flag, with background color, a subtle rounding behavior 
+					// difference between *.toFixed() and *.round():
+					//
+					// -125.5 --toFixed(0)--> -126
+					// -125.5 ----round-----> -125
+
+					var bgcolor = (num == -125.5) ? "yellow" : document.bgColor;
+
+					document.write("<tr>");
+					document.write("<td>" + num    + "</td>");
+					document.write("<td bgcolor='" + bgcolor + "'>" + fixed + "</td>");
+					document.write("<td>" + ceil   + "</td>");
+					document.write("<td bgcolor='" + bgcolor + "'>" + round + "</td>");
+					document.write("<td>" + floor  + "</td>");
+					document.write("</tr>");
+				}
+			</script>
+		</tbody>
+	</table>
+</body>
+</html>

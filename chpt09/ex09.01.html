@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 09.01</title>
+</head>
+<body bgcolor="lightblue">
+	<script type="text/javascript">
+
+		// Array literal of 5 animals.
+		// 
+		// Could also have used Array object: animals = new Array("rat", ...)
+
+		var animals = ["rat", "ferret", "ball python", "tarantula", "cat"];
+		for (var i = 0; i < animals.length; i++) {
+			document.write(animals[i].big() + "<br />");
+		}
+
+		// Append two animals to the end.
+		animals.splice(animals.length, 0, "cougar", "dog");
+
+		// Sort and display result.
+		animals.sort();
+		for (var i in animals) {
+			document.write(animals[i].bold() + "<br />");
+		}
+
+	</script>
+</body>
+</html>

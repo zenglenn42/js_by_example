@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 17.03</title>
+	<script type="text/javascript">
+		function matchUKPostalCode(str) {
+			regex = /^[A-Z]{1,2}[0-9]{1,2}\s\d\w{2}/;
+			return regex.test(str);
+		}
+
+		function testAddressMatch() {
+			var addresses = new Array(
+				"CM23 2QP",
+				"B1 3GJ"
+			);
+			for (var i in addresses) {
+				var address = addresses[i];
+				var result = matchUKPostalCode(address);
+				console.log("address = " + address + ":", result);
+			}
+		}
+
+		window.onload = testAddressMatch;
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 14.10</title>
+	<map name="imageMap">
+		<area shape="circle" href="#" coords="755, 185, 110" >
+	</map>
+	<style>
+		body {
+			font-family: Arial;	
+			font-style: italic;
+			font-weight: bold;
+		}
+		#moonId {
+			position: absolute;
+			background-color: Azure;
+			width: 15em;
+			height: 4em;
+			top: 2em;
+			left: 40em;
+			padding: 1%;
+			opacity: 0.75;
+		}
+	</style>
+	<script type="text/javascript">
+		function init() {
+			hideMoonInfo();
+		}
+		function showMoonInfo() {
+			var mid = document.getElementById("moonId");
+			mid.style.visibility = "visible";
+		}
+		function hideMoonInfo() {
+			var mid = document.getElementById("moonId");
+			mid.style.visibility = "hidden";
+		}
+		window.onload = init;
+	</script>
+</head>
+<body>
+	<div id="moonId">
+		Today, researchers in a science room revealed the moon is infact made of cheese.
+	</div>
+	<img src="imageMap.png" 
+		usemap="#imageMap" 
+		onmouseover="hideMoonInfo();"
+		onmouseout="showMoonInfo();"
+	/>
+</body>
+</html>

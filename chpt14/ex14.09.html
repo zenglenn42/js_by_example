@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 14.09</title>
+	<script type="text/javascript">
+		var gid;	// ghost image id
+
+		function init() {
+			gid = document.getElementById("ghostId");
+			gid.style.visibility = "visible";
+			gid.onclick = hideGhosts;
+			gid.onmouseleave = showGhosts;
+		}
+
+		function hideGhosts() {
+			gid.style.visibility = "hidden";
+		}
+
+		function showGhosts() {
+			gid.style.visibility = "visible";
+		}
+
+		window.onload = init;
+
+	</script>
+</head>
+<body>
+<div align="center">
+Can you catch the ghosts?
+<hr />
+<img id="ghostId" src="ghost.jpg" />
+</div>
+</body>
+</html>

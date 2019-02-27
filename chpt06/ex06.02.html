@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 06.02</title>
+	<script type="text/javascript">
+		function mealTroller() {
+			var kitchenClosed = "Sorry, kitchen is closed.<br \>You'll have to wait or go get a snack.";
+			var time = prompt("Enter time (e.g., 12pm)", "");
+			if (time >= "6am" && time <= "9am") {
+				document.write("Breakfast is served.");
+			} else if (time >= "11am" && time <= "1pm") {
+				document.write("Lunch is served.");
+			} else if (time >= "5pm" && time <= "8pm") {
+				document.write("Dinner is served.");
+			} else {
+				document.write(kitchenClosed);
+			}
+		}
+	</script>
+</head>
+<body onload="mealTroller()">
+</body>
+</html>

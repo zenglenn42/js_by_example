@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="ajaxRqst.js"></script>
+	<link type="text/css" rel="stylesheet" href="ajaxStyle.css" />
+	<script type="text/javascript">
+		function ajaxRqstFile(fileNameUrl) {
+			ajr = newAjaxRqst();
+			if (ajr) {
+				ajr.open("GET", 
+					    fileNameUrl,
+					    true);
+
+				ajr.send(null);
+				ajr.onreadystatechange = function() { ajaxCallback(ajr); }
+			} else {
+				console.log("ajaxRqstFile:", "Unable to create http request.")
+			}
+		}
+		function ajaxCallback(ajaxRqst) {
+			console.log("ajaxCallback called");
+			if (ajaxRqst.readyState == XMLHttpRequest.DONE) {
+				if (ajaxRqst.status == 200) {
+					viewSvrResponse(ajaxRqst.responseText);
+				} else {
+					console.log("ajaxCallback: ", ajaxRqst.statusText);
+				}
+			} else {
+				console.log("ajaxCallback: ", "Ignoring readyState == " 
+					+ ajaxRqst.readyState);
+			}
+		}		
+		function viewSvrResponse(response) {
+			var divRef = document.getElementById("svrResponseText");
+			divRef.innerHTML = response;
+		}
+	</script>
+</head>
+<body>
+	<h1>AJAX Getting a Text File</h1>
+	<a href="#" onclick="ajaxRqstFile('http://localhost/chpt18/ajaxtext.txt')">Get File From Server</a>
+	<p>
+		File text:
+		<hr />
+		<div class="divStyle" id="svrResponseText">
+		</div>
+	</p>
+</body>
+</html>

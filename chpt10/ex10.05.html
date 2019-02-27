@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 10.05</title>
+	<!-- 
+		I'm bending the problem specification a bit here by writing 
+		window info to a sub-frame instead of to a separate window.  
+		(I was hitting cross-origin DOM exceptions.  It could 
+		be my incompetance or just that the book is old enough to be 
+		asking us to do something which is nolonger considered good 
+		style. Afterall, frames are pretty passe to begin with.)
+	-->
+</head>
+<frameset rows="80%,*">
+	<frameset rows="50%, *" cols="50%, *" frameboarder="yes" border="1">
+		<frame src="ex10.05.nw.html" />
+		<frame src="ex10.05.ne.html" />
+		<frame src="ex10.05.sw.html" />
+		<frame src="ex10.05.se.html" />
+	</frameset>
+	<frame src="ex10.05.sub.html" />
+</frameset>
+</html>

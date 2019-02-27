@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 07.05</title>
+</head>
+	<script type="text/javascript">
+		var distance = function(rate, time) {
+			return rate * time;
+		}
+
+		function getAnswer(rate, time) {
+			return alert(distance(rate, time) + " miles");
+		}
+	</script>
+<body>
+	<div align="center" >
+		<p>
+		Assume you're on a raft floating down a river 〰 going 10 mph for 1/2 an hour 🕒.  How much distance would you cover in that time?
+		</p>
+		<input type="button" value="hint" onclick="getAnswer(10, 0.5)" />
+	</div>
+</body>
+</html>

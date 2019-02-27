@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 11.04</title>
+	<script type="text/javascript">
+		var winObj;
+
+		function showReport() {
+			winObj = window.open("", "", "width=300, height=50");
+			var br = "<br />";
+
+			var str = "textForm name = "       + document.textForm.textf.name         + br;
+			    str += "textForm value = "     + document.textForm.textf.value        + br;
+			    str += "textAreaForm name = "  + document.textAreaForm.textArea.name  + br;
+			    str += "textAreaForm value = " + document.textAreaForm.textArea.value + br; 
+			winObj.document.write(str);
+		}
+
+		function closeReport() {
+			winObj.close();
+		}
+	</script>
+</head>
+<body>
+	<form name="textForm" id="textFormId">
+		<formset><legend>First Form</legend>
+			<input  type="text" 
+					name="textf" 
+					id="textId" 
+					size="50"
+					value="default text" />
+			<br />
+			<input type="reset" value="Reset" />
+		</formset>
+	</form>
+	<hr />
+	<form name="textAreaForm" id="textAreaFormId">
+		<formset><legend>Second Form</legend>
+			<textarea name="textArea" 
+			          id="textAreaId" 
+			          rows="5" 
+			          cols="50"
+			          >more default text</textarea>
+		</frameset>
+		<br />
+		<input type="reset" value="Reset" />
+	</form>
+	<br />
+	<hr />
+	<input type="button" name="report" value="Open Report"  onclick="showReport()" />
+	<input type="button" name="close"  value="Close Report" onclick="closeReport()" />
+</body>
+</html>

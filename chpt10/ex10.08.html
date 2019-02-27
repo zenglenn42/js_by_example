@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 10.08</title>
+</head>
+	<script type="text/javascript">
+		var time;
+		var tickIntervalSecs = 60;
+
+		// Trigger an update of the clock display minute.
+		window.setInterval(minuteTick, 1000 * tickIntervalSecs);
+
+		function minuteTick() {
+			var now = new Date();
+			var min = now.getMinutes();
+			var sec = now.getSeconds();
+
+			// pad with leading 0 when less 10 units
+			min = (min < 10) ? "0" + min : min;
+			//sec = (sec < 10) ? "0" + sec : sec;
+			//var clockStr = now.getHours() + ":" + min + ":" + sec;
+
+			var clockStr = now.getHours() + ":" + min;
+			writeStatus(clockStr)
+		}
+
+		// Write time string to status bar and window tab title area.
+		// Sadly, status updates are not working.  Is the browser
+		// config squelching these updates?
+
+		function writeStatus(str) {
+			window.status = str;
+			document.title = str; 
+		}
+
+		// Seed the clock the first time.
+		// minuteTick();
+	</script>
+<body bgcolor="silver">
+	<script type="text/javascript">
+		var linkStr = "show clock in title";
+		document.write(linkStr.link("javascript:minuteTick()"));
+	</script>
+</body>
+</html>

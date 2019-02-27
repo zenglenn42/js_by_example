@@ -1,0 +1,2 @@
+JavaScript was originally called LiveScript back in 1996 and was submitted to the ECMA as a reference implementation of ECMA Script.
+JScript is Microsoft's superset of ECMA Script.

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 13.07</title>
+	<!--
+		I'm seeing "bubble-up" event propagation behavior
+		in my test environment, with events starting with
+		the button, then form, and then document.
+	-->
+
+	<script type="text/javascript">
+		window.onload = init;
+
+		function init() {
+			fid = document.getElementById("formId");
+			fid.onclick = formClicked;
+
+			bid = document.getElementById("buttonId");
+			bid.onclick = buttonClicked;
+		}
+
+		document.onclick = function() { alert("Document clicked."); };
+
+		function buttonClicked() {
+			alert("Button clicked.");
+		}
+
+		function formClicked() {
+			alert("Form clicked.");
+		}
+	</script>
+</head>
+<body>
+	<form id="formId">
+		<formset>
+		<input type="button" id="buttonId" value="Click me" />
+		</formset>
+	</form>
+</body>
+</html>

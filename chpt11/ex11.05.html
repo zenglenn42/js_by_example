@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 11.05</title>
+	<script>
+		Date.prototype.daysTilBday = function(bDaymm, bDaydd) {
+			// Assumes 0-based month numbering.
+
+			if (this.getDate() == bDaydd && this.getMonth() == bDaymm) return 0;
+
+			// Normalize reference time to midnight so a bday of tomorrow is
+			// computed as one day and not rounded down to 0.
+
+			this.setHours(0);
+			this.setMinutes(0);
+
+			var yyyy = this.getFullYear();
+			var bday = new Date(yyyy, bDaymm, bDaydd);
+			if (this.getTime() > bday.getTime() ) {
+				// Already passed birthday for this year so find
+				// days until next year's birthday.
+				bday.setFullYear(++yyyy);
+			}
+			diff = bday.getTime() - this.getTime();
+			daysTil = Math.round(diff / (1000 * 60 * 60 * 24));
+			return daysTil;
+		};
+
+		function getMonthNum(monthToken) {
+			// Returns 0-based month number.  Otherwise -1 for invalid input.
+			var monthNum;
+
+			switch(monthToken.toLowerCase()) {
+				case "jan": case "january":
+					monthNum = 0;
+					break;
+				case "feb": case "february":
+					monthNum = 1;
+					break;
+				case "mar": case "march":
+					monthNum = 2;
+					break;
+				case "apr": case "april":
+					monthNum = 3;
+					break;
+				case "may": case "may":
+					monthNum = 4;
+					break;
+				case "jun": case "june":
+					monthNum = 5;
+					break;
+				case "jul": case "july":
+					monthNum = 6;
+					break;
+				case "aug": case "august":
+					monthNum = 7;
+					break;
+				case "sep": case "september":
+					monthNum = 8;
+					break;
+				case "oct": case "october":
+					monthNum = 9;
+					break;
+				case "nov": case "november":
+					monthNum = 10;
+					break;
+				case "dec": case "december":
+					monthNum = 11;
+					break;
+				default:
+					monthNum = -1; // error
+					break;
+			}
+			return monthNum;
+		}
+
+		function isValidDate(dateField) {
+			console.log("isValidDate");
+			var dateTokens = dateField.value.split(" ");
+			var valid = false;
+			var errStr = "";
+			var daysInMonth = [
+				31, // jan 
+				29, // feb
+				31, // mar
+				30, // apr
+				31, // may
+				30, // jun
+				31, // jul
+				31, // aug
+				30, // sep
+				31, // oct
+				30, // nov
+				31  // dec
+			];
+
+			if (dateTokens.length = 2) {
+				var monthToken = dateTokens[0];
+				var dayToken = parseInt(dateTokens[1]);
+
+				var monthNum = getMonthNum(monthToken);
+				var validMonth = (monthNum != -1);
+
+				if (validMonth) {
+					if (!isNaN(dayToken)) {
+						var maxDaysInMonth = daysInMonth[monthNum];
+						if (dayToken >= 1 && dayToken <= maxDaysInMonth) {
+							valid = true;
+						} else {
+							errStr = "Invalid date for that month.";
+						}
+					} else {
+						errStr = "The day must be a number.";
+					}
+
+				} else {
+					errStr = "Unrecognized month.";
+				}
+			} else {
+				errStr = "Please specify date as: Month Day";
+			}
+			if (!valid) {
+				alert(errStr);
+			} else {
+				console.log("valid date given");
+			}
+			return valid;
+		}
+
+		function calcDaysTilBday(dateValue) {
+			console.log("daysTilBday");
+
+			var dateTokens = dateValue.split(" ");
+			var monthNum = getMonthNum(dateTokens[0]);
+			var dayNum = parseInt(dateTokens[1]);
+
+			var today = new Date();
+			var daysTil = today.daysTilBday(monthNum, dayNum);
+			return daysTil;
+		}
+
+		function showDaysTilBday(form) {
+			console.log("showDaysTilBday");
+			var smiley = "\u263a";
+			if (isValidDate(form.bdayField)) {
+				var days = calcDaysTilBday(form.bdayField.value);
+				if (days == 0) {
+					days += smiley;
+				}
+				form.daysTilField.value = days;
+			}
+			form.bdayField.focus();
+			form.bdayField.select();
+		}
+
+		function resetForm(form) {
+			form.bdayField.value = "";
+			form.daysTilField.value = "";
+
+			form.bdayField.focus();
+		}
+	</script>
+</head>
+<body onload="resetForm(document.tilBdayForm)">
+	<font face="verdana">
+	<form name="tilBdayForm">
+		<big>
+		Find out how many days until your next Birthday!
+		</big>
+		<hr />
+		<br />
+		Enter your birthday (example: July 4) <br />
+		<input type="text" name="bdayField" />
+		<input type="button" value="Calculate" onclick="showDaysTilBday(this.form)" />
+		<br />
+		<br />
+		<input type="button" value="Reset" onclick="resetForm(this.form)" />
+		<br />
+		<hr />
+		<br />
+		Days until your birthday:
+		<input type="text" name="daysTilField" disabled />
+	</form>
+	</font>
+</body>
+</html>

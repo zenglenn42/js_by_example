@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 08.01</title>
+	<script type="text/javascript">
+		const pi = 3.14159;
+
+		var circle = new Object();
+
+		circle.radius = 1;	
+		circle.circumference = function() {
+			return (2 * pi * this.radius).toFixed(2);
+		};
+	</script>
+</head>
+<body bgcolor="silver">
+	<script type="text/javascript">
+		document.write("Circumference = " + circle.circumference() + "<br />");
+		circle.radius = 1/2;
+		document.write("Circumference = " + circle.circumference());
+	</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 09.14</title>
+	<script type="text/javascript">
+		function get1BasedMonth() {
+			return (this.getMonth() + 1);
+		}
+        function getMonthName() {
+        	var months = [
+        		"January", "February", "March",
+        		"April",   "May",      "June",
+        		"July",    "August",   "September",
+        		"October", "November", "December"
+        	];
+        	var month = this.getMonth();
+        	return months[month];
+        }
+        function getDayName() {
+			days = ["Sunday",
+					"Monday", 
+					"Tuesday", 
+					"Wednesday",
+				    "Thursday", 
+				    "Friday", 
+				    "Saturday"];
+			return days[this.getDay()];
+        }
+        function formattedDate() {
+        	return this.getDayName() + ", " + this.getMonthName() + " " + this.getDate() + ", " + this.getFullYear();
+        }
+        Date.prototype.get1BasedMonth = get1BasedMonth;
+        Date.prototype.getMonthName = getMonthName;
+        Date.prototype.getDayName = getDayName;
+        Date.prototype.formattedDate = formattedDate;
+	</script>
+</head>
+<body>
+	Today is 
+	<script type="text/javascript">
+		var now = new Date();
+		document.write(now.formattedDate() + ".");
+	</script>
+</body>
+</html>

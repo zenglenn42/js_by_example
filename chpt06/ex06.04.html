@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 06.04</title>
+	<script type="text/javascript">
+		function jsQuiz() {
+			var tryAgain = true;
+			do {
+				var ans = prompt("At which company was js invented?", "");
+				tryAgain  = (ans == "netscape" || ans == "Netscape") ? false : true;
+			} while (tryAgain);
+			if (!confirm(ans + " is your final answer?")) {
+				jsQuiz();
+			}
+		}
+	</script>
+</head>
+<body onload="jsQuiz()">
+</body>
+</html>

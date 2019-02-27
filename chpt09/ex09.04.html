@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 09.04</title>
+	<script>
+		Date.prototype.plus90Days = function() {
+			var days = 90;
+			var daysMsec = days * 24 * 60 * 60 * 1000;	// Duration in msec.
+			var future = new Date(this.getTime() + daysMsec);
+			return future;
+		}
+
+		function showDueDate() {
+			var now = new Date();
+			var due = now.plus90Days();
+
+			// Show due date, stripping off hh:mm:ss portion of time tag.
+			document.write("Your invoice is due 90 days from today on " 
+				           + due.toLocaleString().split(",")[0] + ".");
+
+		}
+	</script>
+</head>
+<body bgcolor="lightblue">
+	<script>
+		showDueDate();
+	</script>
+</body>
+</html>

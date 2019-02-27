@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 16.01</title>
+	<link rel="stylesheet" type="text/css" href="ex16.01.css"></link>
+	<script type="text/javascript" src="ex16.01.js"></script>
+</head>
+<body>
+	<div class="banner">
+	<h1>Hotel Java</h1>
+	</div>
+	<div class="notes" id="notes">
+		<p>Barista-prepared goodness delivered to your room.</p>
+	</div>
+	<div class="menu">
+	<form name="coffeeMenu">
+		Cappucino <input name="selections" type="radio" value="cappucino" />
+		Cafe Latte <input name="selections" type="radio" value="cafelatee" />
+		Americano <input name="selections" type="radio" value="americano" />
+		Espresso <input name="selections" type="radio" value="espresso" />
+		Coffee <input name="selections" type="radio" value="coffee" />
+		<br /><br />
+		Name: <input name="name" type="text" onfocus="this.select()" />
+		&nbsp;&nbsp;
+		Room Number: <input name="room" type="text" onfocus="this.select()" />
+		&nbsp;&nbsp;<input name="order" type="button" value="Order"/>
+	</form>
+	</div>
+</body>
+</html>

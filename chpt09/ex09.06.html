@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 09.06</title>
+	<script type="text/javascript">
+
+		// ----------------------------------
+		// Present value of a loan.
+		//
+		// pv = PMT * (1 - (1 + IR)^-NP)/IR 
+		// ----------------------------------
+
+		function pv(pmt, ir, np) {
+			 return (pmt * (1 - Math.pow(1 + ir, -np)) / ir).toFixed(2);
+		}
+	</script>
+</head>
+<body>
+	A loan with monthly payments of $500 at an interest rate of 5% with 2 payments left has a present value of: <br>
+
+	<script type="text/javascript">
+		var value = pv(500, 0.05, 2);
+		document.write("<br />$ " + value);
+	</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 08.06</title>
+	<script type="text/javascript">
+		function Employee() {
+			var name;
+			var phone;
+			this.getName = function() {
+				return this.name;
+			}
+			this.setName = function(name) {
+				this.name = name;
+			}
+			this.getPhone = function() {
+				return this.phone;
+			}
+			this.setPhone = function(phone) {
+				this.phone = phone;
+			}
+		}
+
+		function Salesman() {}
+		Salesman.prototype = new Employee(); // Extend Salesman from Employee.
+		Salesman.prototype.constructor = Salesman;
+
+		function Manager() {}
+		Manager.prototype = new Employee();  // Extend Manager from Employee.
+		Manager.prototype.constructor = Manager;
+
+		// Associate salary and raises with Employee by augmenting prototype.
+
+		Employee.prototype.salary = undefined;
+		Employee.prototype.setSalary = function(salary) {
+			Employee.prototype.salary = salary.toFixed(2);
+		}
+
+		Employee.prototype.getSalary = function() { 
+			return Employee.prototype.salary; 
+		};
+
+		Employee.prototype.setRaise = function() {
+			Employee.prototype.salary =  (1.15 * Employee.prototype.salary).toFixed(2);
+		}
+	</script>
+</head>
+<body bgcolor="silver">
+	<script type="text/javascript">
+		var smiley = "\u263a";
+		var frowney = "\u2639"
+
+		var s1 = new Salesman();
+		s1.setName("Jerry");
+		s1.setPhone("unlisted");
+		s1.setSalary(200000);
+
+		var m1 = new Manager();
+		m1.setName("Dave Manager")
+
+		var Employees = new Array(s1, m1);
+
+		document.write("Name:   " + s1.getName() + "<br />");
+		document.write("Phone:  " + s1.getPhone() + "<br />");
+		document.write("Salary: $" + s1.getSalary() + "<br />")
+
+		document.write("Giving 15% raise ... <br />");
+		s1.setRaise();
+		document.write("Salary: $" + s1.getSalary() + "<br />")
+
+		// Verify sub-classed employees are descendants of the base class.
+
+		for (var index in Employees) {
+			if (Employees[index] instanceof Employee) {
+				document.write(Employees[index].getName() + " is an instance of Employee. " + smiley + "<br />");
+			} else {
+				document.write(Employees[index].getName() + " isn't an instance of Employee. " + frowney + "<br />");
+			}
+
+		}
+	</script>
+</body>
+</html>

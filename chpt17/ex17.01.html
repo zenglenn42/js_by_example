@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 17.01</title>
+	<!--
+		Write a regexp that will:
+		1. return true if a string begins with letters between a and j.
+		2. return true if a string contains a number
+		3. in the string "My friend is Betsy Ann Savage", capture the first and last name and display them in reverse, as Savage, Betsy.
+		4. Replace Betsy with Elizabeth in the previous string.
+		5. In the string 123abcdefg584 replace all the letters with XXX.
+		6. Prompt the user for a string of text, then display the first three characters in the string.
+		7. prompt the user for a string of text that includes letters and numbers, then print true if the string does not contain the number 4 or the letter a, or print false if not.
+		8.prompt the user for his or her first and last name.  Display true if the name starts with an uppercase letter followed by lowercase letters.  The last name would be similar to the following: Jones, Smith, McFadden, O'Reilly, and Jones-Smith.
+	-->
+	<script type="text/javascript">
+		function aToj(str) {
+			var regex = new RegExp("[a-j]");
+			console.log("Testing aToJ()");
+			console.log("--------------");
+			if (regex.test(str)) {
+				console.log(">" + str + "< includes letters between a and j");
+			} else {
+				console.log(">" + str + "< does not include letters between a and j");
+			}
+		}
+		function containsNum(str) {
+			var regex = new RegExp("[0-9]");
+			console.log("Testing containsNum()");
+			console.log("---------------------");
+			if (regex.test(str)) {
+				console.log(">" + str + "< includes a number.");
+			} else {
+				console.log(">" + str + "< does not include numbers.");
+			}
+		}
+		function captureBetsy(str) {
+			var regex = new RegExp("(Betsy) Ann (Savage)");
+			console.log("Testing captureBetsy");
+			console.log("--------------------");
+			regex.test(str);
+			var outstr1 = RegExp.$2 + ", " + RegExp.$1;
+			console.log(outstr1);
+			console.log("Testing Betsy --> Elizabeth");
+			console.log("---------------------------");
+			var outstr2 = outstr1.replace("Betsy", "Elizabeth");
+			console.log(outstr2);
+		}
+		function letterstoXXX(str) {
+			/* 123abcdefg584 replace all the letters with XXX. */
+			var regex = new RegExp("[a-zA-Z]+")
+			var outstr = str.replace(regex, "XXX");
+			console.log("Testing letterstoXXX");
+			console.log("input: ", str);
+			console.log("output: ", outstr);
+		}
+		function first3() {
+			var regex = new RegExp("^.{3,3}");
+			var str = prompt("Enter a string of at least 3 or more characters.");
+			console.log("Testing first3");
+			console.log("--------------");
+			var array = regex.exec(str);
+			if (array) {
+				console.log(array[0]);
+			} else {
+				console.log("fail");
+			}
+		}
+		function not4a() {
+			var str = prompt("Enter a string that contains numbers and letters.  Try with and without 4 and a");
+			var regexp = new RegExp("a|4");
+			if (!regexp.test(str)) {
+				console.log("true " + str + " does not contain 4 or a");
+			} else {
+				console.log("false " + str + " /does/ contain 4 or a");
+			}
+		}
+		function isUClc() {
+			console.log("Testing isUClc");
+			console.log("--------------");
+			var fullName = prompt("Enter your first and last name.");
+			var regex = new RegExp("[A-Za-z]+ [A-Z][a-z].*");
+			if (regex.test(fullName)) {
+				console.log("true last name is UClc");
+			} else {
+				console.log("fasle last name is not UClc");
+			}
+		}
+		function testRegExp() {
+			aToj("");
+			aToj("abc");
+			aToj("jkl");
+			aToj("klm");
+			containsNum("abc");
+			containsNum("abc9");
+			captureBetsy("My friend is Betsy Ann Savage");
+			letterstoXXX("123abcdefg584");
+			first3();
+			not4a();
+			isUClc();
+		}
+		window.onload = testRegExp;
+	</script>
+</head>
+<body>
+RegExp testing.  See console for test results.
+</body>
+</html>

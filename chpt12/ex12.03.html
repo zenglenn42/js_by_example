@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 12.03</title>
+	<script type="text/javascript">
+		var pics = new Array();
+		pics[0] = new Image();
+		pics[0].src = "china.png";
+		pics[1] = new Image();
+		pics[1].src = "lake.png";
+		pics[2] = new Image();
+		pics[2].src = "icefall.png";
+		pics[3] = new Image();
+		pics[3].src = "leopard.png";
+
+		var index = 0;
+		var timer;
+
+		function init(form) {
+			console.log("init");
+			var form = form;
+			return function() {
+				index %= pics.length;
+				form.imgName.src = pics[index].src;
+				index++;
+				timer = setTimeout("start()", 1000);
+			};
+		}
+
+		function stop() {
+			clearTimeout(timer);
+		}
+
+		/*
+		function init() {
+			timer = setInterval("start()", 1000);
+		}
+
+		function start() {
+			index %= pics.length;
+			document.ssForm.imgName.src = pics[index].src;
+			index++;
+		}		
+
+		function stop() {
+			clearInterval(timer);
+		}
+		*/
+
+		/*
+		function start() {
+			index %= pics.length;
+			document.ssForm.imgName.src = pics[index].src;
+			index++;
+			timer = setTimeout("start()", 1000);
+		}		
+
+		function stop() {
+			clearTimeout(timer);
+		}
+		*/
+	</script>
+</head>
+<body onload="start = init(document.ssForm)">
+	<form name="ssForm">
+		<img name="imgName" />
+		<br /><hr />
+		<!--
+		<input type="button" value="Start" name="startButton" onclick="init(this.form)" />
+		-->
+		<input type="button" value="Start" name="startButton" onclick="start()" />
+		<input type="button" value="Stop" name="stopButton" onclick="stop()" />
+	</form>
+</body>
+</html>

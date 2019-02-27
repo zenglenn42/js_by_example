@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		body {
+			font-family: Arial;
+		}
+	</style>
+	<script type="text/javascript" src="ajaxRqst.js"></script>
+	<script type="text/javascript">
+		function rqstProcessing(form) {
+			var username = encodeURIComponent(form.username.value);
+			var gender;
+			for (var i in form.gender) {
+				if (form.gender[i].checked) {
+					gender = form.gender[i].value;
+					break;
+				}
+			}
+			if (validInput(username, gender)) {
+				queryStr = "username=" + username;
+				queryStr += "&gender=" + gender;
+
+				var results = queryStr;
+				ajr = newAjaxRqst();
+				var method = "POST"
+				var url = "http://localhost:/chpt18/ex18.03.php"
+				ajr.open(method, url);
+				ajr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				ajr.send(queryStr);
+				ajr.onreadystatechange = function() { responseReadyCB(ajr); };
+			}
+		}
+		function responseReadyCB(ajaxRqst) {
+			switch(ajaxRqst.readyState)	{
+				case XMLHttpRequest.DONE:
+					if (ajaxRqst.status == 200) {
+						viewResults(ajaxRqst.responseText);
+					} else {
+						console.log("responseReadyCB", ajaxRqst.statusText);
+					}
+					break;
+				default:
+					console.log("responseReadyCB", ajaxRqst.readyState);
+			}
+		}
+		function validInput(username, gender) {
+			if (!username) {
+				alert("Please enter a name.");
+				return false;
+			}
+			if (!gender) {
+				alert("Please select a gender.");
+				return false;
+			}
+			return true;
+		}
+		function viewResults(text) {
+			var divRef = document.getElementById("svrResponse");
+			divRef.innerHTML = text;
+		}
+	</script>
+</head>
+<body>
+	<h1>Form Processing with AJAX</h1>
+	<form>
+		Name: <input type="text" name="username" />
+		Male: <input type="radio" name="gender" value="male" />
+		Female: <input type="radio" name="gender" value="female" />
+		<hr />
+		<input type="button" value="submit" onclick="rqstProcessing(this.form)">
+	</form>
+	<h2>Server response</h2>
+	<div id="svrResponse">
+	</div>
+</body>
+</html>

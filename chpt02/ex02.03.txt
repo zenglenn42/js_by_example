@@ -1,0 +1,13 @@
+JavaScript statements enclosed in a set of curly braces:
+
+   { statement1; statement2; ... ; statementn }
+
+combine to form one logical statement often in the context
+of looping constructs that include a multi-statement body:
+
+   while (someCondition == true) 
+   {
+	statement1;
+	statement2;
+	..
+   }

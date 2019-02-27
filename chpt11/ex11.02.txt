@@ -1,0 +1,4 @@
+Form-related name attributes enable convenient addressesing of name/value pairs for client-side data validation as well as server-side data processing actions.  Such actions may effect server state changes or trigger other html documents and related resources to be delivered back to the client.
+
+On the client side, id attributes provide look up through js entry points such as getElementById and offer granular
+access to specific form elements under programmatic control.

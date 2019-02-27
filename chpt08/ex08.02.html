@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 08.02</title>
+	<script type="text/javascript">
+		function Clock() {
+			this.hour = 0;
+			this.minute = 0;
+			this.second = 0;
+			this.timeFormat = 12;
+
+			this.setTime = function(hour, minute, second) {
+				this.hour = hour;
+				this.minute = minute;
+				this.second = second;
+			};
+
+			this.displayTime = function(style) {
+				document.write("Time is ")
+				if (style == "24") {
+					document.write(this.hour + ":" + this.minute + ":" + this.second)
+				} else {
+					var	mStr;
+					var mHour;
+
+					if (this.hour >= 12) {
+						mStr = "p.m.";
+						mHour = this.hour - 12;
+					} else {
+						mStr = "a.m.";
+						mHour = this.hour;
+					}
+					document.write(mHour + ":" + this.minute + ":" + this.second + " " + mStr);
+				}
+			}
+			this.setTimeFormatPref = function(timeFormat) {
+				this.timeFormat = timeFormat;	// 12 or 24
+			}
+		}
+
+		function askTimeFormatPref() {
+			var timeFormat = parseInt(prompt("Do you want time displayed in 12 hour or 24 hour format?", "12"));
+			switch (timeFormat) {
+				case 12:
+				case 24: 
+					break
+
+				default:
+					timeFormat = 12;			// Default to 12 hour format otherwise.
+			}
+			return timeFormat;
+		}
+
+	</script>
+</head>
+
+<body>
+	<script type="text/javascript">
+		var clock = new Clock();
+		clock.setTime(14, 10, 26);
+		clock.setTimeFormatPref(askTimeFormatPref());
+		clock.displayTime(clock.timeFormat);	// Problem statement wants format passed in.
+	</script>
+</body>
+</html>

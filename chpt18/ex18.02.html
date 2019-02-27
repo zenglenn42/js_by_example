@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 18.02</title>
+	<script type="text/javascript" src="ajaxRqst.js"></script>
+	<script type="text/javascript">
+		function ajaxRqstFileText(url) {
+			var ajr = newAjaxRqst();
+			var method = "GET";
+			var async = true;
+			ajr.open(method, url, async);
+			ajr.setRequestHeader("Cache-Control", "no-cache");
+			ajr.send(null);
+			ajr.onreadystatechange = function() { rqstCallback(ajr); };
+		}
+		function rqstCallback(ajaxRqst) {
+			var readyState = ajaxRqst.readyState;
+			switch(readyState) {
+				case XMLHttpRequest.DONE:
+					console.log("rqstCallback readyState == " + readyState);
+					if (ajaxRqst.status == 200) {
+						var fileText = ajaxRqst.responseText;
+						var divRef = document.getElementById("showFileText");
+						divRef.innerHTML = "<p>" + fileText + "</p>";
+					}
+					break;
+
+				default:
+					console.log("rqstCallback readyState == " + readyState);
+					break;
+			}
+		}
+	</script>
+</head>
+<body>
+<a href="#" onclick="ajaxRqstFileText('http://localhost/chpt18/simple.txt')">Get simple.txt from server</a>
+<hr />
+<div id="showFileText">
+</div>
+</body>
+</html>

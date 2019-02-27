@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 09.09</title>
+	<script type="text/javascript">
+		function randomFortune() {
+			var fortunes = [
+				"Procrastination is the theif of time.",
+				"You will go on a long journey.",
+				"Kindness is it's own reward.",
+				"Speak softly and carry a chopstick.",
+				"You are full."
+			];
+			var i = Math.round(Math.random() * (fortunes.length - 1));
+			document.write(fortunes[i]);
+		}
+	</script>
+</head>
+<body onload="randomFortune()">
+</body>
+</html>

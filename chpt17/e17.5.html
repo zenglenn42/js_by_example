@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var matchArray = new Array();
+		var string = "I love the smell of clover.";
+		var regex = /love/g;
+		matchArray = string.match(regex);
+		document.write("Found " + matchArray.length + " matches.");
+		console.log(matchArray); // matchArray[0] = "love"
+		                         // matchArray[1] = "love"
+	</script>
+</body>
+</html>

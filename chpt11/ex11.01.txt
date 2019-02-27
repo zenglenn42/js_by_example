@@ -1,0 +1,3 @@
+The BOM is the browser object model, a programmatic abstraction of attributes and behaviors supported by a given browser.  The DOM is a subset of the BOM and is associated with the html documents rendered by the browser.  It is governed by the W3C standards process.  The Legacy DOM was invented by Netscape when they first released Live Script.
+It provides a means of programmatically representing and manipulating anchors, images, forms, and links as an
+acyclic graph of objects in a hierarchy.

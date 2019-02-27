@@ -1,0 +1,5 @@
+JavaScript tags (e.g., <script type=text/javascript>..</script>) get nestled within the <head> or <body> tags of a web-page.  
+
+Scripts which establish initial state are typically positioned within the <head>..</head> tags whereas behavior that relates to the body of the page can reside within <body>..</body> tags.
+
+JavaScript doesn't understand HTML, per se, but may output or manipulate HTML via BOM methods like document.write or through the DOM api respectfully.

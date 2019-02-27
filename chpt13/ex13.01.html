@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 13.01</title>
+	
+	<!-- Inline event model. -->
+
+	<script type="text/javascript">
+		function handler(button) {
+			var str = button.value;
+			alert(str);
+		}
+	</script>
+</head>
+<body>
+	<input type="button" name="buttonMovies" value="Shoot movies" onClick="handler(this)" />
+	<input type="button" name="buttonGuns" value="Shoot guns" onClick="handler(this)" />
+	<input type="button" name="buttonBasketballs" value="Shoot basketballs" onClick="handler(this)" />
+</body>
+</html>

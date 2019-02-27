@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 15.09</title>
+	<script type="text/javascript">
+		window.onload = function() {
+			divRef = document.getElementById("linkGoHere");
+
+			aRef = document.createElement("a");
+			tRef = document.createTextNode("some link");
+			aRef.appendChild(tRef);
+			aRef.setAttribute("id", "linkID");
+			aRef.setAttribute("href", "javascript:alertMe();");
+			divRef.appendChild(aRef);
+		}
+		function alertMe(aRef) {
+			aRef = document.getElementById("linkID");
+			// Huh, how do I iterate across all the attributes
+			// of an element?  Hardcoding for now.
+			var str = "Attributes of the link: \n";
+			str += "id='" + aRef.id + "'\n";
+			str += "href='" + aRef.href + "'\n";
+			alert(str);
+		}
+	</script>
+</head>
+<body>
+	This example uses the DOM to create a link on the fly.
+	<hr />
+		<div id="linkGoHere">
+		</div>
+	<hr />
+</body>
+</html>

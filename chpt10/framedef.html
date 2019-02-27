@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frame Me!</title>
+	<!-- 
+	This example seems a bit fragile in modern browswers (circa 2018).
+	Certain idioms that attempt to address one frame from another
+	such as: 
+
+		parent.frames[i].document.bgColor=color 
+
+	may throw exceptions:
+
+		Uncaught DOMException: Blocked a frame with origin "null" 
+		from accessing a cross-origin frame at setBgColor 
+		(file:leftmenu.html:8:21) at <anonymous>:1:1
+
+	I'm guessing this amounts to improved modern security configuration 
+	that prevents cross-site scripting.  Frames are a fairly dated idiom
+	to begin with so this wouldn't surprise me.
+
+	Interestingly, updating the the location href indirectly seems well
+	tolerated across various browsers on my laptop.
+
+		parent.frames[i].location.href=url 
+
+	Firefox seems to be the most forgiving browser for navigating these
+	circa 2011 examples.  
+
+	I coded up a simple alert to flag potential issues when running on non-Firefox
+	browsers.
+    -->
+	<script>
+		function getBrowser(userAgent) {
+			var knownBrowsers = ["chrome", "firefox", "opera", "safari"];
+			var lcUA = userAgent.toLowerCase();
+			var detectedBrowser = "unknown";
+
+			for (var prop in knownBrowsers) {
+				if (lcUA.search(knownBrowsers[prop]) != -1) {
+					detectedBrowser = knownBrowsers[prop];
+					break;
+				}
+			}
+			return detectedBrowser;
+		}
+		if (getBrowser(navigator.userAgent) != "firefox") {
+			alert("You may encounter issues (DOMException) running this example on your browser. " +
+				"It seems to run on Firefox, though.");
+		}
+    </script>
+
+</head>
+	<!-- Creating the framesets for two frames -->
+	<!-- This HTML file is named: framedef.html -->
+	<frameset cols="25%,75%">
+		<frame src="leftmenu.html" name="lframe">
+		<frame src="rightcolor.html" name="rframe">
+	</frameset>
+</html>

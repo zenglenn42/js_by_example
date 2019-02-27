@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 08.05</title>
+	<script type="text/javascript">
+		var Customer = {
+			name: undefined,
+			gender: undefined,
+			photo: undefined,
+			occupation: undefined,
+			showCustomer: function() {
+				document.write("<div align='center'><table>");
+				for (var prop in Customer) {
+					if (prop == "showCustomer") break; // Don't display methods.
+					
+					if (prop == "photo") {
+						Customer[prop] = prompt("Enter customer " + prop + " URL");
+						document.write("<tr><td><img src=\"" + Customer[prop] + "\" height='50' width='50'/></td></tr>");
+					} else {
+						Customer[prop] = prompt("Enter customer " + prop);
+						document.write("<tr><td>" + Customer[prop] + "</td></tr>");
+					}
+				}
+				document.write("</table></div>");
+			}
+		};
+	</script>
+	<style>
+	table {
+		border: 1px solid black;	
+	}
+	td {
+		border-bottom: 1px solid #ddd;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		Customer.showCustomer();
+	</script>
+</body>
+</html>

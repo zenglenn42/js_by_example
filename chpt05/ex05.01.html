@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 05.01</title>
+	<script type="text/javascript">
+		function updateTable() {
+			var td = document.getElementById("answerID");
+			var theJsAnswer = 6 + 4 / 2 % 2;
+			td.firstChild.nodeValue = theJsAnswer;
+		}
+	</script>
+</head>
+<body onload="updateTable()">
+<p>
+	JavaScript evaluates 6 + 4 / 2 % 2 similarly to 6 + ((4 / 2) % 2)<br />
+	Which would be 6.
+</p>
+<table style="border: solid">
+	<tbody>
+		<tr>
+			<td>6 + 4 / 2 % 2 = </td>
+			<td id="answerID">anwser</td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

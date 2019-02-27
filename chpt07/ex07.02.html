@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 07.02</title>
+	<script type="text/javascript">
+		function calcTip(bill) {
+			var percentTip = 0.20;
+			return bill * percentTip;
+		}
+		function getBill() {
+			return parseFloat(prompt("How much was your bill?"));
+		}
+		function reportTip() {
+			var bill = getBill();
+			var tip = calcTip(bill);
+			document.write("A generous tip for a $" + bill + " bill would be: <br />" + "$" + tip.toFixed(2));
+		}
+	</script>
+</head>
+<body>
+	<div align="center">
+		<input type="button" value="Tip Calculator" onclick="reportTip()" />
+	</div>
+</body>
+</html>

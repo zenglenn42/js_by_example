@@ -1,0 +1,5 @@
+The DOM is the document object model and represents the structure and content of a given web-page as a acyclic graph of nodes and edges.  
+
+The DOM may be manipulated by javascript, for example, to add dynamic behavior to a web page.
+
+The appearance of the web page may be controlled by cascading style sheets (CSS) that address and mutate html elements of the page.

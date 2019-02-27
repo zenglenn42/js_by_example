@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 11.09</title>
+	<script type="text/javascript">
+		function verify(form) {
+			var userName = form.nameField.value;
+			var ucUserName = userName.toUpperCase();
+			var submit = false;
+			if (!userName) {
+				alert("Please provide a name.");
+			} else if (userName != ucUserName) {
+				alert("Please enter name in upper case letters.");
+			} else {
+				submit = true;
+			}
+			return submit;
+		}
+	</script>
+</head>
+<body>
+	<form name="nameForm" method="http://localhost" action="get" onsubmit="return verify(this);">
+		<font face="verdana" size="+2">
+			Please enter your name in upper case:
+		</font>
+		<br />
+		<input type="text" name="nameField" size="60" />
+		<br />
+		<hr />
+		<input type="image" name="submitButton" alt="Submit" src="submit.png" />
+	</form>
+</body>
+</html>

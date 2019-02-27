@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 13.06</title>
+	<script type="text/javascript">
+
+		// Inobtrusive javascript.
+
+		window.onload = init;
+
+		function init() {
+			var bid = document.getElementById("buttonId");
+			bid.onclick = buttonClicked;
+		}
+
+		function buttonClicked() {
+			var smiley = "\u263a";
+			var frowney = "\u2639";
+			var tid = document.getElementById("textFieldId");
+			if (tid.value == "" || tid.value == null) {
+				alert("Text field is empty. " + frowney);
+			} else {
+				alert("Text field is not empty. " + smiley);
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<form name="view" >
+		<input type="text" id="textFieldId" />
+		<br />
+		<input type="button" id="buttonId" value="Check text field" />
+	</form>
+</body>
+</html>

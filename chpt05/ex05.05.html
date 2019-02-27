@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 05.05</title>
+</head>
+<body bgcolor="lightblue">
+	<big>
+	<script type="text/javascript">
+		var frowney = "\u2639";
+		var smiley = "\u263a";
+		var answer = parseInt(prompt("How many years old are you? ", ""));
+		if (!isNaN(answer)) {
+			if (answer > 12 && answer < 20) {
+				alert("Teenagers rock! " + smiley);
+			} 
+		} else {
+			alert("You entered something non-numeric. " + frowney);
+		}
+	</script>
+	</big>
+</body>
+</html>

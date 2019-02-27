@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 07.07</title>
+	<script type="text/javascript">
+	function paintCost(numBuckets, costPerBucket) {
+		return numBuckets * costPerBucket;
+	}
+
+	// Playing with try/catch blocks.  
+	//
+	// I should probably use some kind of error object, but by the time I do
+	// that, you'll have to pay me thousands of dollers for my mad skills.
+	// For now, simple string errors get the job done.
+	//
+	// I could also leave the catching to a calling function rather than
+	// have promptUser catch his own errors.
+	//
+	// I learned that html attribute names for something like text color
+	// may be called something entirely different in the DOM (e.g., document.fgColor).
+	// Also, I had to explicitly set the <body> "text" attribute in
+	// order for document.fgColor to have a meaninful value (besides empty string "").
+	// Otherwise my IllegalFgColor test was failing.
+
+	function promptUser() {
+		var textColor = document.fgColor;
+		var frowney = "\u2639";
+		var playing = true;
+		while(playing) {
+			try {
+				var color = prompt("Enter color of paint.", "blue")
+				if (color == textColor) throw "IllegalFgColor";
+				playing = false;
+			} catch(err) {
+				if (err == "IllegalFgColor") {
+					alert("That color is in use (by this text)." + frowney + "  Please try something else.");
+				}
+				continue;
+			}
+		}
+
+		playing = true;
+		while(playing) {
+			try {
+				var numBuckets = parseFloat(prompt("Enter number of buckets of pain you need."));
+				if (isNaN(numBuckets)) {
+					throw "NaNBuckets"
+				}
+				playing = false;
+
+			} catch(err) {
+				if (err == "NaNBuckets") {
+					alert("Invalid number of buckets. Expecting a number. " + frowney);
+				}
+				continue;
+			}
+		}
+
+		playing = true;
+		while(playing) {
+			try {
+				var costPerBucket = parseFloat(prompt("Enter cost per bucket."));
+				if (isNaN(costPerBucket)) throw "NaNCost"
+				playing = false;
+			} catch(err) {
+				if (err == "NaNCost") {
+					alert("Invalid cost." + frowney + " Expecting a floating point number.");
+				}
+				continue;
+			}
+		}
+		var totalCost = paintCost(numBuckets, costPerBucket);
+
+		document.write("That paint job just cost " + "$" + totalCost.toFixed(2));
+
+		// Paint the background of the browser window with the selected color.
+		document.bgColor = color;
+	}
+	</script>
+</head>
+<body text="black" bgcolor="silver" onload="promptUser()">
+</body>
+</html>

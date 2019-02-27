@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 10.plugins</title>
+	<script type="text/javascript">
+		
+		// Example output:
+		//
+		// plugins[0].name = WebKit built-in PDF
+		// plugins[0].description = 
+		// plugins[0].filename = 
+		// plugins[0][0].type = application/pdf
+		// plugins[0][0].suffixes = pdf
+		// plugins[0][0].description = Portable Document Format
+
+		function showPlugins() {
+			for (var i  = 0; i < navigator.plugins.length; i++) {
+				document.write("plugins[" + i + "].name = " + navigator.plugins[i].name + "<br />");
+				document.write("plugins[" + i + "].description = " + navigator.plugins[i].description + "<br />");
+				document.write("plugins[" + i + "].filename = " + navigator.plugins[i].filename + "<br />");
+
+				// Interestingly, it looks like plugin elements link to 
+				// mime type entries through navigator.plugins[i][0].
+
+				document.write("plugins[" + i + "][0].type = " + navigator.plugins[i][0].type + "<br />");
+				document.write("plugins[" + i + "][0].suffixes = " + navigator.plugins[i][0].suffixes + "<br />");
+				document.write("plugins[" + i + "][0].description = " + navigator.plugins[i][0].description + "<br />");
+
+				document.write("<br />");
+			}
+		}
+
+		// Example output:
+		//
+		// mimeType[0].type = application/pdf
+		// mimeTypes[0].suffixes = pdf
+		// mimeTypes[0].description = Portable Document Format
+		// mimeTypes[0].enabledPlugin = true
+
+		function showMimeTypes() {
+			for (var i = 0; i < navigator.mimeTypes.length; i++) {
+				document.write("mimeType[" + i + "].type = " + navigator.mimeTypes[i].type + "<br />");
+				document.write("mimeTypes[" + i + "].suffixes = " + navigator.mimeTypes[i].suffixes + "<br />");
+				document.write("mimeTypes[" + i + "].description = " + navigator.mimeTypes[i].description + "<br />");
+				var enabled = Boolean(navigator.mimeTypes[i].enabledPlugin != null);
+				document.write("mimeTypes[" + i + "].enabledPlugin = " + enabled + "<br />");
+
+				document.write("<br />");
+			}
+		}
+
+		function showPluginsAndMimeTypes() {
+			showPlugins();
+			showMimeTypes();
+		}
+	</script>
+</head>
+<body onload="showPluginsAndMimeTypes()">
+</body>
+</html>

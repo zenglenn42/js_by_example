@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 15.06</title>
+	<style>
+		body {
+			font-family: Verdana;
+		}
+		th {
+			background-color: #117bff;
+		}
+		th, td {
+			padding: 0.5em 2.0em;
+			border: solid 1px black;
+		}
+	</style>
+	<script type="text/javascript">
+		function mutateTable() {
+			var tbRef = document.getElementById("tbody")
+			// I find that I can't mutate static row elements 
+			// in my html table body.  :-/ However it all 
+			// works if I create the two row elements on the fly.
+			tbRef.innerHTML = "<tr></tr><tr></tr>";
+
+			var txt11 = document.createTextNode("row 1, col 1");
+			var txt12 = document.createTextNode("row 1, col 2");
+			var txt21 = document.createTextNode("row 2, col 1");
+			var txt22 = document.createTextNode("row 2, col 2");
+
+			var tdRef1 = document.createElement("td");
+			tdRef1.appendChild(txt11);
+			var tdRef2 = document.createElement("td");
+			tdRef2.appendChild(txt12);
+			var tdRef3 = document.createElement("td");
+			tdRef3.appendChild(txt21);
+			var tdRef4 = document.createElement("td");
+			tdRef4.appendChild(txt22);
+
+			var trRef = tbRef.firstChild; // first row
+			trRef.appendChild(tdRef1);
+			trRef.appendChild(tdRef2);
+
+			var trRef = tbRef.lastChild; // second row
+			trRef.appendChild(tdRef3);
+			trRef.appendChild(tdRef4);
+		}
+		window.onload = mutateTable;
+	</script>
+</head>
+<body>
+	<table>
+		This table is populated with table data on the fly using javascript and the Document Object Model (DOM).
+		<hr />
+		<thead><tr><th>Frick</th><th>Frack</th></tr></thead>
+		<tbody id="tbody">
+			<!-- This part populated programmatically. -->
+		</tbody>
+	</table>
+</body>
+</html>

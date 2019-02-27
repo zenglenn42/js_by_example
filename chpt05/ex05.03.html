@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+	y = --x; // decrements x to 4 and then assigns it to y 
+	         //(e.g. y = 4)
+
+	y = x--; // assigns value of x to y and /then/ decrements x to 4.
+	         //(e.g. y = 5)
+	-->
+<html>
+<head>
+	<title>Ex 05.03</title>
+	<script type="text/javascript">
+		function updateTable() {
+			var td = document.getElementById("ans1ID");
+			var x = 5;
+			td.firstChild.nodeValue = x;
+		
+			td = document.getElementById("ans2ID");
+			var y = --x;
+			td.firstChild.nodeValue = y;
+
+			td = document.getElementById("ans3ID");
+			x = 5;
+			td.firstChild.nodeValue = x;
+
+			td = document.getElementById("ans4ID");
+			y = x--;
+			td.firstChild.nodeValue = y;
+		}
+	</script>
+	<style>
+		th, td {
+			border-bottom: 1px solid #DDD;
+			padding: 1em;
+		}
+		td {
+			border-right: 1px solid #DDD;
+		}
+	</style>
+</head>
+<body onload="updateTable()">
+<p>
+	Pre-increment and post-increment operators are what'd you expect in JS:
+</p>
+<table>
+	<thead>
+		<th>Eqn</th>
+		<th>x</th>
+		<th>y</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>x = </td>
+			<td id="ans1ID">anwser</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>y = --x</td>
+			<td></td>
+			<td id="ans2ID">anwser</td>
+		</tr>
+		<tr>
+			<td>x = </td>
+			<td id="ans3ID">anwser</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>y = x--</td>
+			<td></td>
+			<td id="ans4ID">anwser</td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

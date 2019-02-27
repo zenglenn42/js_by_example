@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 14.06</title>
+	<style>
+		#growMeId {
+			background-color: yellow;
+			color: black;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = init;
+
+		var gdiv;
+		function init() {
+			gdiv = document.getElementById("growMeId");
+			gdiv.onclick = growWidth;
+			gdiv.style.width = "100px";
+		}
+
+		function growWidth() {
+			var newWidth = Number(stripPx(gdiv.style.width)) + 10;
+			gdiv.style.width = newWidth + "px";
+			// console.log(gdiv.style.width);
+		}
+
+		function stripPx(value) {
+			return value.split("px")[0];
+		}
+	</script>
+</head>
+<body>
+	<div id="growMeId">
+		I grow longer when you click me.
+	</div>
+</body>
+</html>

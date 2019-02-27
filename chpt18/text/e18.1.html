@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function newAjaxRqst() {
+			var ajaxRqst;
+			try {
+				ajaxRqst = new XMLHttpRequest();
+			} catch(e) {
+				try {
+					ajaxRqst = new ActiveXObject("Msxml2.XMLHTTP");
+				} catch(e) {
+					try {
+						ajaxRqst = new ActiveXObject("Microsoft.XMLHTTP");
+					} catch(e) {
+						return false;
+					}
+				}
+			}
+			return ajaxRqst;
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

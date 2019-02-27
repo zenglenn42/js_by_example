@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 17.02</title>
+	<script type="text/javascript">
+		function matchPhoneNumber(str) {
+			// This is a fairly targetted regex for the provided
+			// input test phone number.  Support for all international
+			// phone number formats would be much more involved.
+			regex = /^[01]{3}\s[0-9]{2}\s[0-9]{3}\s[0-9]{3}\s[0-9]{2}$/;
+			return regex.test(str);
+		}
+
+		function testPhoneMatch() {
+			var phNums = new Array(
+				"001 49 762 899 20"
+			);
+			for (var i in phNums) {
+				var phNum = phNums[i];
+				var result = matchPhoneNumber(phNum);
+				console.log("phNum = " + phNum + ":", result);
+			}
+		}
+
+		window.onload = testPhoneMatch;
+	</script>
+</head>
+<body>
+	International phone number regex.  See console for output.
+</body>
+</html>

@@ -1,0 +1,14 @@
+JavaScript may be referenced as an external resource to a web page via a <script> tag with a 'src' attribute that resolves the location of the js file on the server.
+
+For example:
+
+<html>
+<head>
+   <script type="text/javascript" src="js/myscript.js"></script>
+</head>
+</html>
+
+If the js file resides on a different server than the html file, a hostname can be specified:
+
+   <script type="text/javascript" src="myjshost:/js/myscript.js"></script>
+                                       --------

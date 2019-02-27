@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 13.02</title>
+	<script type="text/javascript">
+		function checkEmpty(textField) {
+			if ( (textField.value == "") || (textField.value == null) ) {
+				alert("Please enter a value for this field.");
+			}
+		}
+	</script>
+</head>
+<body>
+	<form name="view" >
+		Enter name:
+		<br />
+		<input type="text" name="nameField" size="50" onBlur="checkEmpty(this)" />
+		<br />
+		Enter address:
+		<br />
+		<input type="text" name="addressField" size="50" onBlur="checkEmpty(this)" />
+		<br />
+	</form>
+</body>
+</html>

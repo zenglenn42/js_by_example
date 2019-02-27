@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 11.7</title>
+	<script type="text/javascript">
+
+		// -----------
+		// Model
+		// -----------
+
+		var quiz = {
+			items: [
+				{
+					question: "What is your name?",
+					choices: ["Steve", "Freda", "Kavick the Wolf Dog", "Ariel"],
+					answer: 0
+				},
+				{
+					question: "What is your favorite color?",
+					choices: ["Orange", "Rose", "Peach", "Mustard"],
+					answer: 1
+				},
+				{
+					question: "What is your favorite food?",
+					choices: ["Mustard", "Peach", "Rose", "Orange"],
+					answer: 2
+				},
+				{
+					question: "What is your favorite plant?",
+					choices: ["Peach", "Orange", "Mustard", "Rose"],
+					answer: 3
+				},
+				{
+					question: "What is your quest?",
+					choices: ["To cross the bridge.", "To entertain trolls.", "To discern signal amidst noise.",
+							"To give and give ..."],
+					answer: 2
+				}
+			],
+			item: 0,
+			correct: 0,
+
+			init: function() {
+				this.item = 0;
+				this.correct = 0;
+			},
+			checkAnswer: function(ans) {
+				return (ans == this.items[this.item].answer);
+			},
+			getQuestion: function() {
+				return this.items[this.item].question;
+			},
+			getNumQuestions: function() {
+				return this.items.length;
+			},
+			getChoices: function() {
+				return this.items[this.item].choices;
+			},
+			getNumChoices: function() {
+				return this.items[this.item].choices.length;
+			},
+			getCorrectChoice: function() {
+				return this.items[this.item].choices[this.getAnswer()];
+			},
+			getAnswer: function() {
+				return this.items[this.item].answer;
+			},
+			moreQuestions: function() {
+				return this.item < this.items.length;
+			},
+			markCorrect: function() {
+				this.correct++;
+				return this.correct;
+			},
+			nextQuestion: function() {
+				this.item++;
+				return this.item;
+			}
+		};
+
+		// -----------
+		// Controller
+		// -----------
+
+		function askQuestion(form, quiz) {
+			var question = quiz.getQuestion();
+			var choices = quiz.getChoices();
+
+			form.qField.value = question;
+
+			var choicesStr = "";
+			var numChoices = quiz.getNumChoices();
+			for (var i = 0; i < numChoices; i++) {
+				console.log(i, choices[i]);
+				choicesStr += Number(i + 1) + ".  " + choices[i] + "  ";
+			}
+			form.cField.value = choicesStr;
+		}
+
+		function giveQuiz(form, quiz) {
+			form.nextButton.value = "Next";
+			form.feedbackField.value = "";
+			form.nextButton.disabled = true;
+			form.scoreField.value = "";
+			for (var i = 0; i < form.rField.length; i++) {
+				if (form.rField[i].checked) {
+					form.rField[i].checked = false;
+					break;
+				}
+			}
+			if (quiz.moreQuestions()) {
+				askQuestion(form, quiz);
+			} else {
+				giveResults(form, quiz);
+			}
+		}
+
+		function giveAnswer(form, checkbox, quiz) {
+			var smiley = "\u263a";
+			var frowney = "\u2639";
+			console.log("giveAnswer quiz.item", quiz.item);
+			if (quiz.checkAnswer(checkbox.value)) {
+				quiz.markCorrect();
+				form.feedbackField.value = smiley + " Correct";
+			} else {
+				var displayIndex = Number(quiz.getAnswer()) + 1;
+				var correctChoice = quiz.getCorrectChoice();
+				form.feedbackField.value = frowney + " " + displayIndex + ". " + correctChoice;
+			}
+			if (quiz.moreQuestions()) {
+				quiz.nextQuestion();
+				form.nextButton.disabled = false;
+			}
+		}
+
+		function giveResults(form, quiz) {
+			form.nextButton.disabled = true;
+			form.feedbackField.value = "Here are your results. Thanks for taking the quiz."
+			form.scoreField.value = quiz.correct + "/" + quiz.items.length;
+			for (var i = 0; i < form.rField.length; i++) {
+				form.rField[i].disabled = true;
+			}
+			console.log("giving focus to reset");
+			form.resetButton.focus();
+		}
+
+		function resetQuiz(form, quiz) {
+			quiz.init();		// Reset model.
+			resetForm(form);	// Reset view.
+			return true;
+		}
+
+		function resetForm(form) {
+			form.nextButton.disabled = false;
+			form.nextButton.focus();
+			form.nextButton.value = "Start quiz";
+		}
+	</script>
+</head>
+
+<!-- ----------- -->
+<!-- View        -->
+<!-- ----------- -->
+
+<body onload="resetQuiz(document.quizForm, quiz)">
+	<font face="verdana">
+		<big>
+			Quiz Time
+		</big>
+		<p>
+			Test your wits with this multiple choice quiz.
+		</p>
+	<form name="quizForm" onreset="return resetQuiz(this, quiz)">
+		<hr />
+		<input type="text" value="question" name="qField" size="80" disabled />
+		<br /><br />
+		<textarea name="cField" rows="2" cols="60" disabled >choices</textarea>
+		<br />
+		1. <input type="radio" name="rField" value="0" onclick="giveAnswer(this.form, this, quiz)"> &nbsp;&nbsp;
+		2. <input type="radio" name="rField" value="1" onclick="giveAnswer(this.form, this, quiz)"> &nbsp;&nbsp;
+		3. <input type="radio" name="rField" value="2" onclick="giveAnswer(this.form, this, quiz)"> &nbsp;&nbsp;
+		4. <input type="radio" name="rField" value="3" onclick="giveAnswer(this.form, this, quiz)"> &nbsp;&nbsp;
+		<input type="button" name="nextButton" selected value="Start quiz" onClick="giveQuiz(this.form, quiz)" /><br />
+		<hr />
+		<input type="text" value="feedback" name="feedbackField" size="80" />
+		<br />
+		<br />
+		Score:&nbsp;<input type="text" name="scoreField" disabled value="score" size="20" />
+		<input type="reset" name="resetButton" value="Reset" /><br />
+	</form>
+	</font>
+</body>
+</html>

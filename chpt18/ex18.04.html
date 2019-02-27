@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 18.04</title>
+	<style type="text/css">
+		body {
+			background-color: darkseagreen;
+			font-family: Arial;
+		}
+		span {
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	</style>
+	<script type="text/javascript" src="ajaxRqst.js"></script>
+	<script type="text/javascript">
+		function rqstCatalog(url) {
+			var xhr = newAjaxRqst();
+			var method = "GET";
+			var async = true;
+			xhr.open(method, url, async);
+			xhr.send();
+			xhr.onreadystatechange = function() {
+				showCatalogCB(xhr);
+			}
+		}
+		function showCatalogCB(xhr) {
+			switch(xhr.readyState) {
+				case XMLHttpRequest.DONE:
+					if (xhr.status == 200) {
+						showCatalog(xhr);
+					} else {
+						console.log(xhr.statusText);
+					}
+					break;
+			}
+		}
+		function showCatalog(xhr) {
+			var catalog = JSON.parse(xhr.responseText);
+			var divRef = document.getElementById("showCatalog");
+			var bookHtml = "";
+			for (var i in catalog) {
+				var book = catalog[i];
+				bookHtml +=  "Category: " + book.category + "<br />";
+				bookHtml += "Title: " + book.title + "<br />";
+				bookHtml += "Author: " + book.author + "<br />";
+				bookHtml += "Price: " + book.price.toFixed(2) + "<br />";
+				bookHtml += "<br />";
+			}
+			divRef.innerHTML = bookHtml;
+		}
+	</script>
+</head>
+<body>
+	<h1>Parsing JSON File</h1>
+	<span onclick="rqstCatalog('http://localhost/chpt18/bookstore.json')">Get Bookstore Catalog</span>
+	<hr />
+	<div id="showCatalog">
+	</div>
+</body>
+</html>

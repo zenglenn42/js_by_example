@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 05.02</title>
+	<script type="text/javascript">
+		function updateTable() {
+			var td = document.getElementById("ans1ID");
+
+			// Below + is an addition operator since both operands
+			// are numeric.
+			//
+			// ans = 15
+			var ans = 5 + 10;
+
+			if (typeof(ans) == "string") {
+				td.firstChild.nodeValue = '"' + ans + '"';
+			} else {
+				td.firstChild.nodeValue = ans;
+			}
+
+			td = document.getElementById("ans2ID");
+
+			// If the operands are a mixture of numbers and strings,
+			// js converts the numbers --to--> strings.
+			//
+			// ans = "510"
+			ans = 5 + "10";
+
+			if (typeof(ans) == "string") {
+				td.firstChild.nodeValue = '"' + ans + '"';
+			} else {
+				td.firstChild.nodeValue = ans;
+			}
+
+			td = document.getElementById("ans3ID");
+
+			// If the operators are something other than '+', js
+			// converts strings to numbers.
+			//
+			// ans = 50
+			ans = 5 + "10" * 2
+
+			if (typeof(ans) == "string") {
+				td.firstChild.nodeValue = '"' + ans + '"';
+			} else {
+				td.firstChild.nodeValue = ans;
+			}
+		}
+	</script>
+</head>
+<body onload="updateTable()">
+<p>
+	In javascript, strings are stronger operands than numbers for the + operator.
+</p>
+<table style="border: solid">
+	<tbody>
+		<tr>
+			<td>5 + 10 = </td>
+			<td id="ans1ID">anwser</td>
+		</tr>
+		<tr>
+			<td>5 + "10" = </td>
+			<td id="ans2ID">anwser</td>
+		</tr>
+		<tr>
+			<td>5 + "10" * 2 = </td>
+			<td id="ans3ID">anwser</td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

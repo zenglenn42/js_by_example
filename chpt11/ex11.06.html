@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 11.06</title>
+	<script type="text/javascript">
+		function finishStory(form) {
+			var str  = form.storyField.value;
+			    str += "pigs, living nervously in a land of bacon-loving neighbors. ";
+			    str += "The end ... came swiftly early one morning. ";
+			    str += "Later, the farmer, lost in a trance, watched as a miasma of ";
+			    str += "steam wafted up from the cup of coffee before him.  A familiar sizzle in ";
+			    str += "the background quieted his mind and cushioned his catatonia. ";
+			    str += "He studied the darkening grime under his nails. ";
+			    str += "Something made him stir from his reverie.  He sauntered wearily ";
+			    str += "to the stove to eye the contents of the worn castiron skillet. "
+			    str += "He flipped the wolf steak unceremoniously. 'Not today my little";
+			    str += " piggies, not today,' he mused.";
+
+			form.storyField.value = str;
+			form.storyField.value = str;
+			form.finishButton.disabled = true;
+		}
+	</script>
+</head>
+<body>
+	<form name="storyForm" onreset="this.finishButton.disabled=false; return true">
+		<big>
+			Finish the story
+			<hr />
+		</big>
+		<textarea name="storyField" cols="50" rows="11">Once upon a time, there were three little ... </textarea>
+		<br />
+		<hr />
+		<input type="button" name="finishButton" value="Finish Story" onclick="finishStory(this.form)" />
+		<input type="reset" value="Reset" />
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 16.02</title>
+	<style>
+		body {
+			font-family: Georgia;
+		}
+		.address {
+			position: absolute;
+			left: 10em;
+			width: 30em;
+		}
+		.short {
+			width: 10em;
+		}
+		form label {
+			font-weight: bold;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = init;
+
+		function init() {
+			if (getBrowser(navigator.userAgent) != "firefox") {
+				alert("This example was tested on Firefox.  Other browsers may have issues due to variance in handling of cookies.")
+			}
+
+			var form = document.address;
+			var c = decodeURI(document.cookie);
+			//console.log("cookie", c);
+			if (c) {
+				// Fill in form from cookie if cookie found.
+				var i = c.indexOf("name=");
+				var name = c.substr(i).split("=")[1].split(";")[0];
+				form.name.value = name;
+
+				i = c.indexOf("street=");
+				var street = c.substr(i).split("=")[1].split(";")[0];
+				form.street.value = street;
+
+				i = c.indexOf("city=");
+				var city = c.substr(i).split("=")[1].split(";")[0];
+				form.city.value = city;
+
+				i = c.indexOf("state=");
+				var state = c.substr(i).split("=")[1].split(";")[0];
+				form.state.value = state;
+
+				i = c.indexOf("zipcode=");
+				var zipcode = c.substr(i).split("=")[1].split(";")[0];
+				form.zipcode.value = zipcode;
+			}
+		}
+
+		function getBrowser(userAgent) {
+			var knownBrowsers = ["chrome", "firefox", "opera", "safari"];
+			var lcUA = userAgent.toLowerCase();
+			var detectedBrowser = "unknown";
+
+			for (var prop in knownBrowsers) {
+				if (lcUA.search(knownBrowsers[prop]) != -1) {
+					detectedBrowser = knownBrowsers[prop];
+					break;
+				}
+			}
+			return detectedBrowser;
+		}
+
+		function validate(form) {
+			console.log("Validating form");
+			var valid = false;
+			if (form.name.value
+				&& form.street.value 
+				&& form.city.value 
+				&& form.state.value 
+				&& form.zipcode.value) {
+				valid = true;
+			} else {
+				alert("Please fill in missing entries.");
+			}
+			return valid;
+		}
+
+		function makeCookie(form) {
+			if (validate(form)) {
+				console.log("Form completed.  Making cookie.");
+
+				var expiry = new Date();
+				var days = 7;  // Days before cookie expires.
+				expiry.setTime(expiry.getTime() + days * 24 * 60 * 60 * 1000);
+
+				var cookie = encodeURI("name") + "=" + encodeURI(form.name.value) + ";";
+				cookie += "expires=" + expiry.toGMTString();
+				document.cookie = cookie;
+
+				var cookie = encodeURI("street") + "=" + encodeURI(form.street.value) + ";";
+				cookie += "expires=" + expiry.toGMTString();
+				document.cookie = cookie;
+
+				var cookie = encodeURI("city") + "=" + encodeURI(form.city.value) + ";";
+				cookie += "expires=" + expiry.toGMTString();
+				document.cookie = cookie;
+
+				var cookie = encodeURI("state") + "=" + encodeURI(form.state.value) + ";";
+				cookie += "expires=" + expiry.toGMTString();
+				document.cookie = cookie;
+
+				var cookie = encodeURI("zipcode") + "=" + encodeURI(form.zipcode.value) + ";";
+				cookie += "expires=" + expiry.toGMTString();
+				document.cookie = cookie;
+			} else {
+				console.log("Incomplete form.  Unable to make cookie.");
+			}
+		}
+	</script>
+</head>
+<body>
+	<div>
+		<h1>Mailing Address</h1>
+		<form name="address">
+			<label>Name:</label>    <input type="textarea" class="address" name="name" /><br />
+			<label>Street:</label>  <input type="textarea" class="address" name="street" /><br />
+			<label>City:</label>    <input type="textarea" class="address" name="city" /><br />
+			<label>State:</label>   <input type="textarea" class="address short" name="state" /><br />
+			<label>Zipcode:</label> <input type="textarea" class="address short" name="zipcode" /><br />
+			<hr />
+			<input type="reset" value="Reset" />
+			<input type="button" value="Make Cookie" onclick="makeCookie(this.form)" />
+		</form>
+	</div>
+</body>
+</html>

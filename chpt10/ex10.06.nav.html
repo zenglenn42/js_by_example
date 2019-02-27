@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function showImg(basename) {
+			// parent.frames[2].document.bgColor=color;
+			url = basename + ".png"
+			parent.pic.location.href=url;
+		}	
+	</script>
+</head>
+<body text="black" bgcolor="#dddddd">
+	<font face="verdana" size="+1">
+	<ul>
+		<li><a href="javascript:showImg('fish')">fish</a></li>
+		<li><a href="javascript:showImg('humming_bird')">bird</a></li>
+		<li><a href="javascript:showImg('lion')">lion</a></li>
+		<li><a href="javascript:showImg('polar_bear')">bear</a></li>
+	</ul>
+	</font>
+</body>
+</html>

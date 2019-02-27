@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 07.06</title>
+	<script type="text/javascript">
+		function factorial(n) {
+			if (n < 0) throw("IllegalInput")
+			if (n <= 1) return 1
+			else {
+				return n * factorial(n-1)
+			}
+		}
+
+		function factorialTest() {}
+			document.write("3! = " + factorial(3) + "<br />");
+			document.write("5! = " + factorial(5) + "<br />");
+			document.write("6! = " + factorial(6) + "<br />");
+			document.write("-1! = " + factorial(-1) + "<br />");
+	</script>
+</head>
+<body onload="factorialTest()">
+</body>
+</html>

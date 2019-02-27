@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 09.10</title>
+	<script type="text/javascript">
+		String.prototype.fontfamily = function(name) {
+			var element="<font face='" + name + "'>" + this + "</font>";
+			return element;
+		}
+		String.prototype.fancyFont = function() {
+			
+			// Not sure how to chain font family of "verdana" into this idiom.
+			// Book generally relies on <font> element rather than clever js:
+			// 
+			// e.g., <font family="verdana">..</font> element.
+
+			return this.italics().fontsize("26").fontfamily("verdana");
+		}
+	</script>
+</head>
+<body>
+	<script>
+		var str = "Lorem ipsum dolor sit amet.";
+		document.write(str.fancyFont());
+	</script>
+</body>
+</html>

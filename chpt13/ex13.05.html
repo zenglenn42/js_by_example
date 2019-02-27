@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 13.05</title>
+	<script type="text/javascript">
+		function hotSpot(e) {
+			alert("Event: " + e.type + "(" + e.pageX + ", " + e.pageY + ")");
+		}
+	</script>
+	<map name="imageMap">
+		<area shape="circle" href="moon.html" coords="755, 185, 110" > <!-- xc, yc, rad -->
+		<!-- I find that I need to disable the default area to get 
+		     mouseout (or even mouseover) event. -->
+		<!-- <area shape="default" href="imageMap.png"> -->
+	</map>
+</head>
+<body>
+	<div align="center">
+		<font face="verdana" size="+4">
+			Moon rise
+		</font>
+		<br />
+		(Try mousing over the moon.)
+		<!-- It seems that an image map hotspot is detected by "mousing out"
+			 of the non-hotspot areas of the image. -->
+		<img src="imageMap.png" usemap="#imageMap" onmouseout="hotSpot(event)" />
+	</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head><title>Ex 15.03</title>
+	<script type="text/javascript">
+		window.onload = mutateDiv;
+
+		//
+		// Programmatically add the following to the div:
+		//
+		// <p>This is the <em>content</em> of my paragraph.</p>
+
+		function mutateDiv() {
+			divID = document.getElementById("testdiv");
+
+			para = document.createElement("p");
+			txt1 = document.createTextNode("This is the ");
+			para.appendChild(txt1);
+
+			emphasis = document.createElement("em");
+			txt2 = document.createTextNode("content");
+			emphasis.appendChild(txt2);
+			para.appendChild(emphasis);
+
+			txt3 = document.createTextNode(" of my paragraph.");
+			para.appendChild(txt3);
+
+			divID.appendChild(para);
+		}
+
+		function mutateDiv2() {
+			divID = document.getElementById("testdiv");
+			divID.innerHTML = 
+				"<p>This is the <em>content</em> of my paragraph.</p>";
+		}
+	</script>
+</head>
+<body>
+	<div id="testdiv"></div>
+</body>
+</html>

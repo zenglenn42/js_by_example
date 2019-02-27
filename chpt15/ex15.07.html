@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 15.07</title>
+	<script type="text/javascript">
+		function eHandler() {
+			console.log("eHandler() fired");
+		}
+
+		function register(objRef, event, handler) {
+			console.log("register()");
+			return function() {
+				var useCapture = false;	// Use bubble-up event prop.
+				objRef.addEventListener(event, handler, useCapture);
+				objRef.style.backgroundColor = "red"; // visual hint
+			}
+		}
+
+		function deregister(objRef, event, handler) {
+			console.log("deregister()");
+			return function() {
+				var useCapture = false; // Use bubble-up event prop.
+				objRef.removeEventListener(event, handler, useCapture);
+				objRef.style.backgroundColor = "white";
+			}
+		}
+
+		function init() {
+			var fButton = document.getElementById("fireButton");
+
+			// Configure the register-button to register an event
+			// listener for the "fire" button.
+
+			var regListener = register(fButton, "click", eHandler);
+			var eButton = document.getElementById("registerButton");
+			eButton.onclick = regListener;
+
+			// Configure the deregister-button to deregister the
+			// event listener associated with the "fire" button.
+
+			var deregListener = deregister(fButton, "click", eHandler);
+			var dButton = document.getElementById("deregisterButton");
+			dButton.onclick = deregListener;
+		}
+		window.onload = init;
+	</script>
+	<style>
+		body {
+			font-family: Verdana;
+		}
+		p {
+			padding: 0.5em 2em;
+		}
+	</style>
+</head>
+<body>
+	<p>
+	This example uses DOM Level 2 to register and deregister event listeners associated with the "fire" button.  Output is sent to the console log so you may want to open that up now under developer tools.
+	</p>
+	<button id="registerButton">Register Event Listener</button>
+	<button id="deregisterButton">Deregister Event Listener</button>
+	<hr />
+	<button id="fireButton">Fire Event</button>
+</body>
+</html>

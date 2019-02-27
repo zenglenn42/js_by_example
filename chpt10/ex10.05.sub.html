@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 10.05 Auxillary Window</title>
+	<script type="text/javascript">
+		function showOrigWindowInfo() {
+			document.write("There are " + (top.window.frames.length - 1) + " frames above this one.");
+		}
+	</script>
+</head>
+<body onload="showOrigWindowInfo()">
+</body>
+</html>

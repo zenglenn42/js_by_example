@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="ajaxRqst.js"></script>
+	<link type="text/css" rel="stylesheet" href="ajaxStyle.css" />
+	<script type="text/javascript">
+		function ajaxSendValue(textElem) {
+			ajr = newAjaxRqst();
+			if (ajr) {
+				queryStr  = "name=" + textElem.value;
+				queryStr += "&random=" + Math.random();  // cheap cache avoidance
+
+				ajr.open("GET", 
+					    "http://localhost/chpt18/serverTime.php?" + queryStr, 
+					    true);
+
+				ajr.send(null);
+				ajr.onreadystatechange = function() { ajaxCallback(ajr); }
+			} else {
+				console.log("ajaxSendValue:", "Unable to create http request.")
+			}
+		}
+		function ajaxCallback(ajaxRqst) {
+			console.log("ajaxCallback called");
+			if (ajaxRqst.readyState == XMLHttpRequest.DONE) {
+				if (ajaxRqst.status == 200) {
+					viewSvrResponse(ajaxRqst.responseText);
+				} else {
+					console.log("ajaxCallback: ", ajaxRqst.statusText);
+				}
+			} else {
+				console.log("ajaxCallback: ", "Ignorning readyState == " 
+					+ ajaxRqst.readyState);
+			}
+		}		
+		function viewSvrResponse(response) {
+			var divRef = document.getElementById("svrResponseText");
+			divRef.innerHTML = response;
+		}
+	</script>
+</head>
+<body>
+	<h1>AJAX Example</h1>
+	<form>
+		Your name:
+		<input type="text" onkeyup="ajaxSendValue(this)" name="username" id="username" />
+	</form>
+	<p>
+		Server response:
+		<hr />
+		<div class="divStyle" id="svrResponseText">
+		</div>
+	</p>
+</body>
+</html>

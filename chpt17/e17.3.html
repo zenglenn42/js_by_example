@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		var regex = /l.ve/gi;
+		var myString = "My lovely gloves are worn for wear, Love.";
+		              //0--^+----1----+----2----+----3----+----4
+		              //.  |
+		              //.  +--- index = 3
+
+		var results = regex.exec(myString);
+		console.log("results[0] = ",    results[0]);          // "love"
+		console.log("results[1] = ",    results[1]);          // undefined
+		console.log("results.index = ", results.index);       // 3
+		console.log("results.input = ", results.input);       // "My lovely ..."
+		console.log("RegExp.lastMatch = ", RegExp.lastMatch); // "love"
+		console.log("RegExp.leftContext = ", RegExp.leftContext);   // "My "
+		console.log("RegExp.rightContext = ", RegExp.rightContext); // "ly ..."
+		console.log("RegExp.source = ", RegExp.source);       // undefined
+		console.log("RegExp.lastIndex = ", RegExp.lastIndex); // undefined
+
+		regex = /My (\w*)/i;
+		results = regex.exec(myString);
+		console.log("results.index = ", results.index);       // 0
+		console.log("results.lastMatch = ", results.lastMatch); // undefined
+		console.log("RegExp.lastMatch = ", RegExp.lastMatch); // "My lovely"
+		console.log("RegExp.lastParen = ", RegExp.lastParen); // "lovely"
+		console.log("RegExp.$1 = ", RegExp.$1);               // "lovely"
+
+		regex = /(love)/ig;
+		results = regex.exec(myString);
+		console.log("results.index = ", results.index);         // 3
+		console.log("results.lastIndex = ", results.index);     // 3
+		console.log("RegExp.lastParen = ", RegExp.lastParen);   // "love"
+		console.log("RegExp.$1 = ", RegExp.$1);                 // "love"
+		console.log("RegExp.$2 = ", RegExp.$2);                 // ""
+		
+		console.log("RegExp.index = ", RegExp.index);           // undefined
+		console.log("RegExp.lastIndex = ", RegExp.lastIndex);   // undefined
+		console.log("results.lastParen = ", results.lastParen); // undefined
+	</script>
+</head>
+<body>
+
+</body>
+</html>

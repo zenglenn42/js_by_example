@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 11.08</title>
+	<script type="text/javascript">
+		var confirmWin;
+		function confirmVacay(form) {
+			var vacayStr = "";
+			for (var i = 0; i < form.vacaySelect.options.length; i++) {
+				if (form.vacaySelect.options[i].selected) {
+					vacayStr += form.vacaySelect.options[i].value + "\n";
+				}
+			}
+			return Boolean(window.confirm(vacayStr));
+		}
+	</script>
+</head>
+<body>
+	<font face="verdana">
+	<form name="vacayForm" onsubmit="return confirmVacay(this)">
+	<big>
+		Where do you want to go?
+	</big>	
+		<hr />
+		&nbsp;
+		<select name="vacaySelect" multiple>
+			<option>Maui</option>
+			<option>Jamaica</option>
+			<option>Bali</option>
+			<option>Virgin Islands</option>
+		</select>
+		<br /><br />
+		<input type="button" name="submitButton" value="Submit Query" onclick="confirmVacay(this.form)"/> 
+		<input type="reset" name="resetButton" value="Reset" />
+	</form>
+	</font>
+</body>
+</html>

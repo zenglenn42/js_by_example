@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body bgcolor="silver">
+	<font face="arial" size="+1">
+	<script type="text/javascript">
+		var myString="I love my new gloves";
+		var regex = /love/g;
+		var booleanResult = regex.test(myString);
+		if (booleanResult) {
+			document.write("Tested regular expression <em>" 
+				+ regex.source + "</em><br />"); // love
+			document.write("Starts searching at pos " + regex.lastIndex);
+		} else {
+			alert("No match");
+		}
+	</script>
+	</font>
+</body>
+</html>

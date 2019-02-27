@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Learn JS: Ex 03.01</title>
+</head>
+<body>
+	<noscript>This page requires javascript to be enabled.</noscript>
+	<script type="text/javascript">
+		var name = "Bob";
+		var age  = 42;
+		var fair = true;
+		var smiley = "\u263a";
+		var frowney = "\u2639";
+
+		document.write("My name is " + name + ".\n");
+		if (age >= 36) {
+			document.write("I'm at least middle aged.\n");
+		} else {
+			document.write("I'm relatively young.\n");
+		}
+		document.write("Life is " + fair + ".");
+		if (fair) {
+			document.write("<font size='+3'> " + smiley +  "</font>\n");
+		} else {
+			document.write("<font size='+3'> " + frowney +  "</font>\n");
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	body {
+		background-repeat: no-repeat;
+	}
+	</style>
+	<script type="text/javascript">
+		var pics = {
+			nebula: {
+				fname: "nebula.png",
+				desc: "Some nebula."
+			},
+			earth: {
+				fname: "earth.png",
+				desc: "Planet Earth."
+			},
+			galaxy: {
+				fname: "galaxy.png",
+				desc: "Some galaxy."
+			},
+			moon: {
+				fname: "moonrise.png",
+				desc: "Moon rise."
+			},
+			saturn: {
+				fname: "saturn.png",
+				desc: "Planet Saturn."
+			}
+		};
+		
+		function showPic(rField, pics) {
+			var frame = parent.picFrame;
+			var fname = pics[rField.value].fname;
+			var desc = pics[rField.value].desc;
+			console.log("fname = ", fname);
+
+			frame.pic.src = fname;
+			celestialForm.descField.value = desc;
+		}
+
+		function getBrowser(userAgent) {
+			var knownBrowsers = ["chrome", "firefox", "opera", "safari"];
+			var lcUA = userAgent.toLowerCase();
+			var detectedBrowser = "unknown";
+
+			for (var prop in knownBrowsers) {
+				if (lcUA.search(knownBrowsers[prop]) != -1) {
+					detectedBrowser = knownBrowsers[prop];
+					break;
+				}
+			}
+			return detectedBrowser;
+		}
+		
+		if (getBrowser(navigator.userAgent) != "firefox") {
+			alert("You may encounter issues (DOMException) running this example on your browser. " +
+				"It may run stress-free on firefox, though.");
+		}
+
+	</script>
+</head>
+<body text="white" background="milkyway.png">
+	<font face="verdana">
+	<form name="celestialForm">
+		<input type="radio" name="rbField" id="idNebula" value="nebula" onclick="showPic(this, pics)" />
+		<lable for="idNebula">Nebula</lable>
+		<br />
+
+		<input type="radio" name="rbField" id="idEarth" value="earth" onclick="showPic(this, pics)" />
+		<lable for="idEarth">Earth</lable>
+		<br />
+
+		<input type="radio" name="rbField" id="idGalaxy" value="galaxy" onclick="showPic(this, pics)" />
+		<lable for="idGalaxy">Galaxy</lable>
+		<br />
+
+		<input type="radio" name="rbField" id="idMoonrise" value="moon" onclick="showPic(this, pics)" />
+		<lable for="idMoonrise">Moon rise</lable>
+		<br />
+
+		<input type="radio" name="rbField" id="idSaturn" value="saturn" onclick="showPic(this, pics)" />
+		<lable for="idSaturn">Saturn</lable>
+		<br />
+		<hr />
+		<input type="text" name="descField" size="50" value="Description" />
+	</form>
+	</font>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 09.03</title>
+	<script>
+		function getFullMonth() {
+			var months = [
+				"January", "February", "March", 
+				"April",   "May",      "June", 
+				"July",    "August",   "September", 
+				"October", "November", "December"
+			];
+			var month = this.getMonth();
+			return months[month];
+		}
+		Date.prototype.fullMonth = getFullMonth;
+
+		function showCurrentMonth() {
+			var now = new Date;
+			document.write("The current month is " + now.fullMonth().big());
+		}
+	</script>
+</head>
+<body onload="showCurrentMonth()">
+</body>
+</html>

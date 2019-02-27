@@ -1,0 +1,50 @@
+body, div.notes::before {
+	background: url("coffee.png") 0 / cover fixed;
+	font-family: Arial;
+}
+div.banner {
+	position: absolute;
+	top: 0.5em;
+	left: 3em;
+}
+div.notes {
+	position: absolute;
+	top: 4.2em;
+	left: 12.7em;
+	width: 8em;
+	height: 7em;
+	font-family: cursive;
+	padding: 0.2em 1.2em;
+	color: black;
+	font-weight: bolder;
+	font-size: 200%;
+	color: white;
+	/* Frosted glass */
+	background-color: white;
+	background: hsla(0, 0%, 100%, .3);
+	overflow: hidden;
+}
+div.notes::before {
+	/* Frosted glass */
+	content: '';
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	filter: blur(15px);
+	margin: -30px;
+	z-index: -1;
+}
+div.menu {
+	position: absolute;
+	top: 27em;
+	left: 3em;
+	color: white;
+	font-weight: bold;
+	background-color: black;
+	opacity: .7;
+	padding: 0.5em 2.0em;
+}
+h1 {
+	font-size: 3em;
+	color: white;
+	opacity: .7;
+}

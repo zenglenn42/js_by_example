@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 11.06</title>
+	<script type="text/javascript">
+	var index = 0; // red light
+	var timeout3secs = 3 * 1000;
+	var trafficLight = [
+		{pic: "redLight.png",    words: "Stop", timeout: timeout3secs},
+		{pic: "yellowLight.png", words: "Slow", timeout: timeout3secs},
+		{pic: "greenLight.png",  words: "Go",   timeout: timeout3secs}
+	];
+
+	function nextLight(index) {
+		document.tlForm.imgField.src = trafficLight[index].pic;
+		document.tlForm.textField.value = trafficLight[index].words;
+		index++;
+		index %= trafficLight.length
+		//console.log(index);
+		setTimeout("nextLight(" + index + ")", trafficLight[index].timeout);
+	}
+	</script>
+</head>
+<body onload="nextLight(index)">
+	<font face="verdana">
+	<form name="tlForm">
+		<div align="center">
+			<big>
+				Traffic Light
+			</big>
+			<br /><br />
+			<fieldset>
+			<img name="imgField" width="340" height="100">
+			</fieldset>
+			<br />
+			<input name="textField" type="text" size="6" disabled />
+		</div>
+	</form>
+	</font>
+</body>
+</html>

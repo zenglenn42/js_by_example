@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 12.01</title>
+	<script type="text/javascript">
+	imageFiles = [
+		"china.png", 
+		"fish.png", 
+		"humming_bird.png", 
+		"lake.png", 
+		"leopard.png", 
+		"lion.png", 
+		"polar_bear.png", 
+		"sunset.png", 
+		"icefall.png" 
+	];
+
+	var imageArray;
+
+	function cacheImages() {
+		imageArray = new Array();
+		for (var i in imageFiles) {
+			imageArray[i] = new Image();
+			imageArray[i].src = imageFiles[i];
+		}
+	}
+
+	function showRandomImage() {
+		var rindex = Math.round(Math.random() * (imageFiles.length - 1));
+		document.imageName.src = imageArray[rindex].src;
+	}
+	</script>
+</head>
+<body bgcolor="silver" onload="cacheImages(); showRandomImage()">
+<div align="center">
+	<img name="imageName" src="icefall.png" width="600" height="370" />
+</div>
+</body>
+</html>

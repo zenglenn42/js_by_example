@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 10.07</title>
+</head>
+	<script type="text/javascript">
+	function getScreenInfo() {
+		var str = 
+				"screen height: " + window.screen.height + "\n" +
+				"screen width: " + window.screen.width + "\n" +
+				"screen avail height: " + window.screen.availHeight + "\n" +
+				"screen avail width: " + window.screen.availWidth + "\n" +
+				"screen color depth: " + window.screen.colorDepth + "\n";
+		window.alert(str);
+	}		
+	</script>
+<body bgcolor="lightblue">
+	<script type="text/javascript">
+		var str = "Get Screen Metrics";
+		document.write(str.link("javascript:getScreenInfo()"));
+	</script>
+</body>
+</html>

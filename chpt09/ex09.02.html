@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 09.02</title>
+</head>
+<body bgcolor="silver">
+	<script type="text/javascript">
+		// Create an associative array of font colors.
+		var colors = new Array();
+		colors["r"] = "red";
+		colors["g"] = "green";
+		colors["b"] = "blue";
+		colors["y"] = "yellow";
+
+		for (color in colors) {
+			// Display the name of the color with a font of that color.
+			document.write("color = " 
+				+ colors[color].fontcolor(colors[color]).big() + "<br \>");
+		}
+	</script>
+
+</body>
+</html>

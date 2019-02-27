@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 07.04</title>
+	<script type="text/javascript">
+		function isLeapYear(year) {
+			
+			// Leap years are divisible by 4 provided
+			// they are not divisable by 100 unless 
+			// they happen to be divisable by 400.
+
+			return (year % 4  == 0 && (year % 100 != 0 || year %400 == 0));
+		}
+
+		function playLeapYear() {
+			var smiley = "\u263a";
+			var frowney = "\u2639";
+
+			var prompting = true;
+			while(prompting) {
+				try {
+					var year = parseInt(prompt("Enter year:", "yyyy"));
+					if (isNaN(year)) throw "NaN"
+				} catch(err) {
+					if (err == "NaN") {
+						alert("That is not a valid year.")
+					} else {
+						alert(err.name + err.message);
+					}
+					return;
+				}
+				var str = "isn't";
+				var emoji = frowney;
+				if (isLeapYear(year)) {
+					str = "is";
+					emoji = smiley;			
+				}
+				alert("The year " + year + " " + str + " a leap year. " + emoji);
+				prompting = confirm("Play again?");
+			}
+		}
+	</script>
+</head>
+<body onload="playLeapYear()">
+I'll tell you if a year is a leap year or not.
+</body>
+</html>

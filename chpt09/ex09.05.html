@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 09.05</title>
+	<script>
+		Date.prototype.daysTilBday = function(bDaymm, bDaydd) {
+			--bDaymm; // Correct for 0-based month numbering.
+			if (this.getDate() == bDaydd && this.getMonth() == bDaymm) return 0;
+
+			// Normalize reference time to midnight so a bday of tomorrow is
+			// computed as one day and not rounded down to 0.
+
+			this.setHours(0);
+			this.setMinutes(0);
+
+			var yyyy = this.getFullYear();
+			var bday = new Date(yyyy, bDaymm, bDaydd);
+			if (this.getTime() > bday.getTime() ) {
+				// Already passed birthday for this year so find
+				// days until next year's birthday.
+				bday.setFullYear(++yyyy);
+			}
+			diff = bday.getTime() - this.getTime();
+			daysTil = Math.round(diff / (1000 * 60 * 60 * 24));
+			return daysTil;
+		}
+
+		function showDaysTilBirthday(mm, dd) {
+			var smiley = "\u263a"
+
+			now = new Date();
+			days = now.daysTilBday(mm, dd); // Correct for 0-based month numbering.
+			switch(days) {
+				case 0:
+					document.write("Your birthday is today! " + smiley)
+					break;
+				case 1:
+					document.write("Your birthday is tomorrow! " + smiley)
+					break;
+				default:
+					document.write("Your birthday is in " + days + " days. " + smiley)
+			}
+		}
+	</script>
+</head>
+<body>
+	<script type="text/javascript">showDaysTilBirthday(12, 25)</script>
+</body>
+</html>

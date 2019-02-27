@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 11.05</title>
+	<script type="text/javascript">
+		var gPic = 0;
+		var timeout;
+
+		gAnimate = new Array();
+		gAnimate[0] = new Image();
+		gAnimate[0].src = "animate1.png";
+		gAnimate[1] = new Image();
+		gAnimate[1].src = "animate2.png";
+		gAnimate[2] = new Image();
+		gAnimate[2].src = "animate3.png";
+		gAnimate[3] = new Image();
+		gAnimate[3].src = "animate4.png";
+		gAnimate[4] = new Image();
+		gAnimate[4].src = "animate5.png";
+		gAnimate[5] = new Image();
+		gAnimate[5].src = "animate4.png";
+		gAnimate[6] = new Image();
+		gAnimate[6].src = "animate3.png";
+		gAnimate[7] = new Image();
+		gAnimate[7].src = "animate2.png";
+
+		function startAnimation() {
+			gPic %= gAnimate.length;
+			document.view.imgName.src = gAnimate[gPic].src;
+			gPic++;
+			console.log(gPic);
+			timeout = window.setTimeout("startAnimation()", 250);
+		}
+
+		function stopAnimation() {
+			clearTimeout(timeout);
+		}
+	</script>
+</head>
+<body>
+	<form name="view" />
+	<img src="animate1.png" name="imgName" width="560" height="400" />
+	<hr />
+	<br />
+	<input type="button" value="Start animation" onclick="startAnimation()" />
+	<input type="button" value="Stop" onclick="stopAnimation()" />
+</body>
+</html>

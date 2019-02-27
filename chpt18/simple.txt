@@ -1,0 +1,4 @@
+This is a simple
+text file served
+up to web clients
+by the web server.

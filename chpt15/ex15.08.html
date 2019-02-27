@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 15.08</title>
+	<style>
+		body {
+			font-family: Georgia;
+		}
+		table {
+			border: 1px solid teal;
+		}
+		td {
+			padding: 0.5em 2em;
+		}
+		td#clickable {
+			color: white;
+			background-color: black;
+			transition: background-color 0.5s;
+		}
+		td#clickable:hover {
+			background-color: #117bff;
+			transition: background-color 0.5s;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			objRef = document.getElementById("clickable");
+			objRef.addEventListener("click", clickDog, false);
+			function clickDog(e) {
+				if (e.target.id == "clickable") {
+					updRef = document.getElementById("updatable");
+					updRef.firstChild.nodeValue = "racoon";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	Attaching an event listener to dog.  Try clicking it.
+	<table>
+		<tr><td id="clickable">dog</td></tr>
+		<tr><td id="updatable">cat</td></tr>
+		<tr><td>bird</td></tr>
+	</table>
+</body>
+</html>

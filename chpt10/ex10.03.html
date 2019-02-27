@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 10.03</title>
+	<script type="text/javascript">
+		function hasFlashEnabled() {
+			// Um, courtesy: https://stackoverflow.com/questions/998245/how-can-i-detect-if-flash-is-installed-and-if-not-display-a-hidden-div-that-inf
+			var hasFlash = false;
+			try {
+			  var fo = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+			  if (fo) {
+			    hasFlash = true;
+			  }
+			} catch (e) {
+			  if (navigator.mimeTypes
+			        && navigator.mimeTypes['application/x-shockwave-flash'] != undefined
+			        && navigator.mimeTypes['application/x-shockwave-flash'].enabledPlugin) {
+			    hasFlash = true;
+			  }
+			}
+			return hasFlash;
+		}
+		function reportFlash() {
+			document.write("Flash enabled: " + hasFlashEnabled());
+		}
+	</script>
+</head>
+<body bgcolor="lightblue" onload="reportFlash()">
+</body>
+</html>

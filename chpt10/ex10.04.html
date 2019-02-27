@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 10.04</title>
+	<script type="text/javascript">
+		var winObj;
+		function openWin() {
+			winObj = open("ex10.04.a.html", "profoundWindow", "resizable=yes, scrollbars=yes");
+			winObj.moveTo(0, 0); // Move to upper left portion of screen.
+			winObj.focus();
+		}
+		function closeWin() {
+			try {
+				winObj.close();
+			} catch(e) {
+				document.write("Unable to close window. <br />");
+				document.write(e.name + ":" + e.message);
+			}
+		}
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		oStr = "Open Window";
+		cStr = "Close Window";
+
+		document.write(oStr.link("javascript:openWin()") + "<br />");
+		document.write(cStr.link("javascript:closeWin()"));
+	</script>
+
+</body>
+</html>

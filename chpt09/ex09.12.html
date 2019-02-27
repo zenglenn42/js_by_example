@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 09.12</title>
+	<script type="text/javascript">
+		costs = [ [1.00,  2.00,  3.00,  4.00],
+		          [2.00,  4.00,  6.00,  8.00],
+		          [9.00, 10.00, 11.00, 12.00] ];
+
+  		function costPlusTax() {
+  			for (var i = 0; i < costs.length; i++) {
+  				document.write("<tr>");
+  				for (var j = 0; j < costs[i].length; j++) {
+  					document.write("<td>");
+					document.write((costs[i][j] * 1.09).toFixed(2));
+  					document.write("</td>");
+				}
+  				document.write("</tr>");
+  			}
+  		}
+	</script>
+	<style type="text/css">
+		th {
+			text-align: left;
+		}
+		td {
+			background-color: gray;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Costs</th>
+				<th>plus</th>
+				<th>Tax</th>
+			</tr>
+		</thead>
+		<tbody>
+			<script type="text/javascript">
+				costPlusTax();
+			</script>
+		</tbody>
+	</table>
+</body>
+</html>

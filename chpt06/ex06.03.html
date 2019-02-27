@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 06.03</title>
+	<script>
+		function fToC(degF) {
+			return (degF - 32) / 1.8;
+		}
+		function makeTable() {
+
+			for (var fTemp = 20; fTemp <= 120; fTemp += 5) {
+				var cTemp = fToC(fTemp)
+
+				var tr = document.createElement("tr")
+				var td1 = document.createElement("td")
+				var td2 = document.createElement("td")
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+
+				var tnode1 = document.createTextNode(fTemp);
+				td1.appendChild(tnode1);
+
+				var tnode2 = document.createTextNode(cTemp.toFixed(2));
+				td2.appendChild(tnode2);
+
+				tblID = document.getElementById("tableID");
+				tblID.appendChild(tr);
+			}
+		}
+	</script>
+	<style>
+	table {
+		border: 1px solid black;
+	}
+	th, td {
+		padding: 0.20em;
+	}
+	th {
+		border-bottom: 1px solid black;
+	}
+	</style>
+</head>
+<body onload="makeTable()">
+<table id="tableID">
+	<thead><th>℉</th><th>℃</th></thead>
+</table>
+</body>
+</html>

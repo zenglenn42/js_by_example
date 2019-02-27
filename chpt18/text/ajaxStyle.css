@@ -1,0 +1,13 @@
+body {
+	background-color: aliceblue;
+	font-family: Verdana;
+}
+
+.divStyle {
+	background-color: darkseagreen;
+	margin-left: 20%;
+	margin-right: 20%;
+	border-style: solid;
+	color: black;
+	font-size: 150%;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 10.02</title>
+	<script type="text/javascript">
+
+		// Arg. The userAgent schema seems non-existent.  
+		// Hard to query this unruly beast of tokens that vary across platforms and browsers.
+		// Falling back on simple, a priori, test of known OSes and browsers.
+
+		function getOs(userAgent) {
+			var knownOses = ["windows", "os x", "linux"]
+			var lcUA = userAgent.toLowerCase();
+			var detectedOs = "unknown";
+
+			for (var os in knownOses) {
+				if (lcUA.search(knownOses[os]) != -1) {
+					detectedOs = knownOses[os];
+					break;
+				}
+			}
+			return detectedOs;
+		}
+
+		function getBrowser(userAgent) {
+			var knownBrowsers = ["chrome", "firefox", "opera", "safari"]; 	
+			var lcUA = userAgent.toLowerCase();
+			var detectedBrowser = "unknown";
+
+			for (var prop in knownBrowsers) {
+				if (lcUA.search(knownBrowsers[prop]) != -1) {
+					detectedBrowser = knownBrowsers[prop];
+					break;
+				}
+			}
+			return detectedBrowser;
+		}
+
+		function getBrowserVersion(browser, userAgent) {
+			var lcUA = userAgent.toLowerCase();
+			var detectedVersion = "unknown";
+			if (browser == "unknown") return detectedVersion;
+
+			switch(browser) {
+				case "safari":
+					// userAgent = "... Version/12.0 Safari/605.1.15"
+					//                  --------
+					regexp = new RegExp("version" + "\/[0-9]*")
+					break;
+
+				default:
+					// userAgent = "... Chrome/69.0.3497.100 ..."
+					//                  -------
+					regexp = new RegExp(browser + "\/[0-9]*")
+					break;
+			}
+			var beginTokenIndex = lcUA.search(regexp)
+			if (beginTokenIndex == -1) return detectedVersion;
+			var endTokenIndex = lcUA.indexOf(" ", beginTokenIndex)
+			if (endTokenIndex == -1) endTokenIndex = lcUA.length;
+
+			// Isolate version token (e.g., "Chrome/69.0.3497.100").
+			versionToken = lcUA.substring(beginTokenIndex, endTokenIndex).split("/")[1];
+
+			detectedVersion = parseInt(versionToken); // Return just the major version (e.g., "69").
+			return detectedVersion;
+		}
+
+		// Show browser and os info.
+		//
+		// Typical output: 
+		//
+		// "You're running the chrome browser (version 69) on os x."
+
+		function showInfo() {
+			var os = getOs(navigator.userAgent);
+			var browser = getBrowser(navigator.userAgent);
+			var version = getBrowserVersion(browser, navigator.userAgent);
+			document.write("You're running ")
+			if (browser == "unknown") {
+				document.write("an unrecognized browser ");
+			} else {
+				document.write("the " + browser + " browser ");
+			}
+			document.write("(version " + version + ") on ");
+			if (os == "unknown") {
+				document.write("an unrecognized operating system.");
+			} else {
+				document.write(os + ".");
+			}
+		}
+	</script>
+</head>
+<body onload="showInfo()">
+</body>
+</html>

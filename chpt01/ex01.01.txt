@@ -1,0 +1,7 @@
+User navigates to a web page via the browser.
+
+This triggers an html protocol event over the network that causes the server to return the content of the requested page back to the client browser.
+
+The browser parses the html and renders it to the window line by line until javascript (either inline or as a remote resource) is referenced.  Html processing is halted until the script is parsed.
+
+Presentation level details are applied to the content of the html when CSS resources are encountered either inline or as <link> tags.

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 15.04</title>
+	<style>
+		body {
+			font-family: Arial;
+		}
+		li {
+			list-style: square;
+		}
+		.btn {
+			color: white;
+			background-color: black;
+			transition: background-color 0.5s;
+			text-decoration: none;
+			padding: 0.5em 2em;
+		}
+		.btn:hover {
+			background-color: #117bff;
+			transition: background-color 0.5s;
+		}
+	</style>
+	<script type="text/javascript">
+		function appendItem(item) {
+			console.log("appendItem()");
+			ulRef = document.getElementsByTagName("ul")[0];
+			liRef = document.createElement("li");
+			tRef = document.createTextNode(item);
+			liRef.appendChild(tRef);
+			ulRef.appendChild(liRef);
+		}
+	</script>
+</head>
+<body>
+	<div>
+	Vegetables
+	<ul>
+		<li>zucchini</li>
+		<li>lettuce</li>
+		<li>carrots</li>
+		<li>jicama</li>
+	</ul>
+	<a href="#" class="btn" onclick="appendItem('pizza')">Add Pizza</a>
+	</div>
+</body>
+</html>

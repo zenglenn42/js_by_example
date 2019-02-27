@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 05.06</title>
+</head>
+<body bgcolor="lightblue">
+	<big>
+	<script type="text/javascript">
+		var frowney = "\u2639";
+		var smiley = "\u263a";
+		var degF = parseFloat(prompt("Enter temperature in ℉:", ""));
+		var degC = 5/9 * (degF - 32);
+		if (!isNaN(degF)) {
+			alert(degF + " ℉ = " + degC.toFixed(1) + " ℃ " + smiley);
+		} else {
+			alert("You entered a non-numeric temperature. " + frowney);
+		}
+	</script>
+	</big>
+</body>
+</html>

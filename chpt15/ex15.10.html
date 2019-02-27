@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ex 15.10</title>
+	<link rel="stylesheet" type="text/css" href="ex15.10.css" >
+	<script type="text/javascript" src="ex15.10.js"></script>
+</head>
+<body>
+	<h1 class="title">Blog Austin</h1>
+	<div id="input">
+		<form id="inputForm" onsubmit="return postEntry(this)">
+			<label for="name">Name</label>
+			<input id="nameentry" type="text" onfocus="this.select();hideDeleteBtn()"/><br /><br />
+			<textarea id="entry" onfocus="this.select();hideDeleteBtn()">Blog-worthy thoughts go here.</textarea>
+			<hr />
+			<input type="submit" />
+		</form>
+	</div>
+	<div id="output">
+		<div id="blogOutput">
+		</div>
+		<hr class="clickVisible" name="clickVisible"/>
+		<button class="clickVisible" name="clickVisible" id="deleteBtn" name="deletePost" onclick="deleteBlogPost()">Delete</button>
+	</div>
+</body>
+</html>
